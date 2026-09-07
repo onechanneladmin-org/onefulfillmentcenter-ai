@@ -15,7 +15,15 @@ function asKeywords(value?: string | string[]) {
 
 function stripHtml(input?: string): string {
   if (!input) return "";
-  return input.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return input
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function robotsFromSeo(seo?: SeoApiData["seo"]): Metadata["robots"] {

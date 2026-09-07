@@ -1,11 +1,11 @@
-# Prod image + GKE rollout for test.onefulfillcenter.com
+# Prod image + GKE rollout for onefulfillcenter.com
 #   gcloud builds submit --config=cloudbuild.yaml --project=gentle-epoch-277301 .
 substitutions:
   _GKE_CLUSTER: oneautobackend
   _GKE_LOCATION: us-east1-b
   _K8S_DEPLOYMENT: onefulfillcenter
   _K8S_NAMESPACE: default
-  _NEXT_PUBLIC_SITE_URL: https://test.onefulfillcenter.com
+  _NEXT_PUBLIC_SITE_URL: https://onefulfillcenter.com
 
 steps:
   - name: gcr.io/cloud-builders/docker

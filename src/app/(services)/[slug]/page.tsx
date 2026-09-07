@@ -23,7 +23,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const page = getServiceBySlug(slug);
-  if (!page) return { title: "Onefulfillcenter" };
+  if (!page) return { title: "OneFulfillCenter" };
   return createPageMetadata(servicePath(page.slug), {
     title: page.seoTitle,
     description: page.metaDescription,
