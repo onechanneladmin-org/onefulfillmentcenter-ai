@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     ? { index: false, follow: false, nocache: true }
     : { index: true, follow: true },
   title: {
-    default: "Onefulfillcenter | Next Generation Fulfillment Center",
-    template: "%s | Onefulfillcenter",
+    default: "OneFulfillCenter | Next Generation Omni-Channel Fulfillment",
+    template: "%s | OneFulfillCenter",
   },
   description:
-    "Omni-channel fulfillment with a distributed warehouse network that optimizes B2B and B2C order processing for brands and retailers.",
+    "Omni-channel 3PL fulfillment with a distributed warehouse network that optimizes B2B and B2C order processing for brands and retailers.",
   keywords: [
-    "Onefulfillcenter",
+    "OneFulfillCenter",
     "One Fulfillment Center",
     "ecommerce fulfillment",
     "3PL",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: company.name,
-    title: "Onefulfillcenter | Next Generation Fulfillment Center",
+    title: "OneFulfillCenter | Next Generation Omni-Channel Fulfillment",
     description:
-      "Omni-channel fulfillment with a distributed warehouse network for brands and retailers.",
+      "Omni-channel 3PL fulfillment with a distributed warehouse network for brands and retailers.",
     url: company.url,
   },
   icons: {

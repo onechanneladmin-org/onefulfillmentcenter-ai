@@ -30,7 +30,7 @@ const NotFound = () => {
           textTransform: "uppercase",
         }}
       >
-        Onefulfillcenter
+        OneFulfillCenter
       </p>
       <h1
         style={{

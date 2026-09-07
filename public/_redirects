@@ -1,33 +1,54 @@
-/demo/ /request-demo/ 301
-/book-a-demo/ /request-demo/ 301
-/features/ https://onechanneladmin.com/features?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_features 301
-/inventory-management/ https://onechanneladmin.com/post/multi-channel-inventory-management-software?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_inventory 301
-/warehouse-management-software-wms/ https://onechanneladmin.com/post/warehouse-management-system-for-ecommerce?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_wms 301
-/product-data-by-ai-landing/ https://onechanneladmin.com/post/ai-product-data-pim-marketplace-seo?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_product_data 301
-/feed-management-software/ https://onechanneladmin.com/post/product-feed-management-software-for-marketplaces-and-ai-search?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_feeds 301
-/order-management-2/ https://onechanneladmin.com/post/omnichannel-order-management-system-for-commerce?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_orders 301
-/repricer-2/ https://onechanneladmin.com/post/marketplace-repricing-software-connected-to-inventory-and-margin?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_repricing 301
-/ecommerce-crm-software/ https://onechanneladmin.com/post/ecommerce-crm-software-for-customers-vendors-rentals-and-service?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_crm 301
-/third-party-logistics-3pl/ https://onechanneladmin.com/post/3pl-warehouse-software-for-commerce-fulfillment?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_3pl 301
-/services/ https://onechanneladmin.com/features?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_services 301
-/services-details/ https://onechanneladmin.com/features?utm_source=onechanneladmin.com&utm_medium=redirect&utm_campaign=legacy_services 301
-/project/ / 301
-/project-2/ / 301
-/project-details/ / 301
-/pricing/ /request-demo/ 301
-/faq/ /request-demo/ 301
-/team/ / 301
-/team-details/ / 301
-/testimonial/ / 301
-/blog-sidebar/ / 301
-/blog-carousel/ / 301
-/blog-details/* / 301
-/blog-details/ / 301
-/shop/ / 301
-/shop-details/* / 301
-/shop-details/ / 301
-/cart/ / 301
-/checkout/ / 301
+# OneFulfillCenter 301 Redirects
+
+# Demo & Contact
+/requestdemo/ /#newsletter 301
+/requestdemo /#newsletter 301
+/request-demo/ /#newsletter 301
+/request-demo /#newsletter 301
+/contact-us/ /#newsletter 301
+/contact-us /#newsletter 301
+/contact/ /#newsletter 301
+/contact /#newsletter 301
+/demo/ /#newsletter 301
+/demo /#newsletter 301
+
+# Core Solutions
+/b2c-b2b-wholesale-fulfillment/ /solutions/b2c-b2b-wholesale-fulfillment/ 301
+/b2c-b2b-wholesale-fulfillment /solutions/b2c-b2b-wholesale-fulfillment/ 301
+/off-solutions/b2c-b2b-wholesale-fulfillment/ /solutions/b2c-b2b-wholesale-fulfillment/ 301
+/off-solutions/b2c-b2b-wholesale-fulfillment /solutions/b2c-b2b-wholesale-fulfillment/ 301
+/off-solutions/warehouse-and-inventory-storage/ /solutions/warehousing-and-inventory-storage/ 301
+/off-solutions/warehouse-and-inventory-storage /solutions/warehousing-and-inventory-storage/ 301
+/warehouse-and-inventory-storage/ /solutions/warehousing-and-inventory-storage/ 301
+/warehouse-and-inventory-storage /solutions/warehousing-and-inventory-storage/ 301
+/fulfillment-new/onefulfillcenter/warehouse-and-inventory-storage/ /solutions/warehousing-and-inventory-storage/ 301
+/fulfillment-new/onefulfillcenter/warehouse-and-inventory-storage /solutions/warehousing-and-inventory-storage/ 301
+
+# Specialized Fulfillment Services
+/amazon-fba-prep-services/ /amazon-fba-prep/ 301
+/amazon-fba-prep-services /amazon-fba-prep/ 301
+/off-solutions/amazon-fba-prep-services/ /amazon-fba-prep/ 301
+/off-solutions/amazon-fba-prep-services /amazon-fba-prep/ 301
+/off-solutions/kitting-packaging-amp-assembly/ /kitting/ 301
+/off-solutions/kitting-packaging-amp-assembly /kitting/ 301
+/off-solutions/returns-repairs-amp-warranty/ /returns-management/ 301
+/off-solutions/returns-repairs-amp-warranty /returns-management/ 301
+/receiving-amp-reverse-logistics/ /reverse-logistics/ 301
+/receiving-amp-reverse-logistics /reverse-logistics/ 301
+/subscription-box-fulfillment/ /subscription-fulfillment/ 301
+/subscription-box-fulfillment /subscription-fulfillment/ 301
+/shipping-and-last-mile-delivery/ /ecommerce-fulfillment/ 301
+/shipping-and-last-mile-delivery /ecommerce-fulfillment/ 301
+
+# Inventory Management Aliases
+/inventory-management/ /solutions/warehousing-and-inventory-storage/ 301
+/inventory-management /solutions/warehousing-and-inventory-storage/ 301
+/inventory-management-2/ /solutions/warehousing-and-inventory-storage/ 301
+/inventory-management-2 /solutions/warehousing-and-inventory-storage/ 301
+/inventory-management-landing/ /solutions/warehousing-and-inventory-storage/ 301
+/inventory-management-landing /solutions/warehousing-and-inventory-storage/ 301
+
+# Template Stubs Cleanup
 /home-1-one-page/ / 301
 /home-2/ / 301
 /home-2-one-page/ / 301
@@ -37,3 +58,10 @@
 /home-4-one-page/ / 301
 /home-5/ / 301
 /home-5-one-page/ / 301
+/project/ / 301
+/project-2/ / 301
+/project-details/ / 301
+/team/ / 301
+/team-details/ / 301
+/cart/ / 301
+/checkout/ / 301

@@ -13,6 +13,11 @@ function asKeywords(value?: string | string[]) {
   return parts.length ? parts : undefined;
 }
 
+function stripHtml(input?: string): string {
+  if (!input) return "";
+  return input.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 function robotsFromSeo(seo?: SeoApiData["seo"]): Metadata["robots"] {
   if (!seo) return undefined;
 
@@ -41,12 +46,20 @@ export function seoResultToMetadata(
 ): Metadata {
   const seo = result.seoData?.seo || {};
   const fromCms = hasCmsSeoFields(result.seoData);
-  const title = fromCms
+  const rawTitle = fromCms
     ? seo.metaTitle || result.seoData?.title || fallback.title || company.shortName
     : fallback.title || seo.metaTitle || result.seoData?.title || company.shortName;
-  const description = fromCms
+  const rawDescription = fromCms
     ? seo.metaDescription || result.seoData?.description || fallback.description || ""
     : fallback.description || seo.metaDescription || result.seoData?.description || "";
+
+  const cleanDescription = stripHtml(rawDescription);
+
+  // If the title already includes brand identifier, use absolute title to prevent duplicate suffix from layout template
+  const title = /OneFulfillCenter|1CA|OneChannelAdmin/i.test(rawTitle)
+    ? { absolute: rawTitle }
+    : rawTitle;
+
   const keywords =
     asKeywords(fromCms ? seo.metaKeywords : undefined) ||
     asKeywords(fromCms ? result.seoData?.keywords : undefined) ||
@@ -63,7 +76,7 @@ export function seoResultToMetadata(
 
   return {
     title,
-    description: description || undefined,
+    description: cleanDescription || undefined,
     keywords,
     robots: fromCms ? robotsFromSeo(seo) : undefined,
     alternates: canonicalUrl
@@ -72,8 +85,8 @@ export function seoResultToMetadata(
         }
       : undefined,
     openGraph: {
-      title: (fromCms && og.title) || title,
-      description: (fromCms && og.description) || description || undefined,
+      title: (fromCms && og.title) || rawTitle,
+      description: (fromCms && stripHtml(og.description)) || cleanDescription || undefined,
       url: canonicalUrl,
       siteName: company.name,
       type: ((fromCms && og.type) as "website") || "website",
@@ -83,8 +96,8 @@ export function seoResultToMetadata(
       card:
         ((fromCms && twitter.cardType) as "summary_large_image") ||
         "summary_large_image",
-      title: (fromCms && twitter.title) || title,
-      description: (fromCms && twitter.description) || description || undefined,
+      title: (fromCms && twitter.title) || rawTitle,
+      description: (fromCms && stripHtml(twitter.description)) || cleanDescription || undefined,
       images: twitterImage ? [twitterImage] : undefined,
     },
   };
@@ -108,8 +121,8 @@ export function getStructuredData(result: SeoFetchResult, fallbackTitle?: string
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: title,
-    ...(description ? { description } : {}),
-    ...(result.canonicalUrl ? { url: result.canonicalUrl } : {}),
+    description: stripHtml(description),
+    url: result.canonicalUrl,
     isPartOf: {
       "@type": "WebSite",
       name: company.name,

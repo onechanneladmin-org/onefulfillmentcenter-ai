@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
+import { toast } from "react-toastify";
 import { company, socialLinks } from "@/data/brandArchitecture";
 import { SERVICE_NAV } from "@/data/ofcNav";
+import { submitLead } from "@/utils/submitLead";
 
 const phoneTel = `tel:${company.phone.replace(/[^+\d]/g, "")}`;
 
@@ -32,13 +34,26 @@ const FOOTER_COLS = [
 
 const OfcNewsletterFooter = () => {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!email.trim()) return;
-    setStatus("sent");
-    setEmail("");
+    if (!email.trim() || status === "submitting") return;
+    try {
+      setStatus("submitting");
+      await submitLead({
+        email: email.trim(),
+        source: "onefulfillcenter.com/#newsletter",
+        subscribe: true,
+        message: "Newsletter subscription & demo interest from OneFulfillCenter footer",
+      });
+      setStatus("sent");
+      setEmail("");
+      toast.success("Thank you for subscribing! Our fulfillment team will be in touch.");
+    } catch {
+      setStatus("idle");
+      toast.error("Subscription failed. Please email sales@onechanneladmin.com directly.");
+    }
   };
 
   return (
@@ -57,8 +72,8 @@ const OfcNewsletterFooter = () => {
                 onChange={(event) => setEmail(event.target.value)}
                 aria-label="Email address"
               />
-              <button className="ofc-btn ofc-btn--primary" type="submit">
-                {status === "sent" ? "Subscribed" : "Subscribe"}
+              <button className="ofc-btn ofc-btn--primary" type="submit" disabled={status === "submitting"}>
+                {status === "submitting" ? "Submitting..." : status === "sent" ? "Subscribed" : "Subscribe"}
               </button>
             </form>
           </div>

@@ -1,6 +1,6 @@
 export const company = {
   name: "One Fulfillment Center",
-  shortName: "Onefulfillcenter",
+  shortName: "OneFulfillCenter",
   url: (
     process.env.NEXT_PUBLIC_SITE_URL ||
     process.env.PUBLIC_SITE_ORIGIN ||
@@ -13,7 +13,7 @@ export const company = {
   ).replace(/\/+$/, ""),
   demoUrl: "#newsletter",
   demoCta: "Request a Demo",
-  leadEndpoint: "https://dev.onechanneladmin.com/inventory/customer/createContact?skipCloudFlare=true",
+  leadEndpoint: "https://backend.onechanneladmin.com/inventory/customer/createContact?skipCloudFlare=true",
   investorEmail: "sales@onechanneladmin.com",
   investorSubject: "Fulfillment inquiry with One Fulfillment Center",
   phone: "+1 (888) 610-2044",
