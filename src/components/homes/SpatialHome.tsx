@@ -108,8 +108,11 @@ const FOOTER_COLS = [
     links: SERVICE_NAV.slice(6).map((item) => ({ label: item.title, href: item.href })),
   },
   {
-    title: "Get Started",
-    links: [{ label: "Request a Demo", href: "#newsletter" }],
+    title: "Resources",
+    links: [
+      { label: "Fulfillment Blog", href: "/blog/" },
+      { label: "Request a Demo", href: "#newsletter" },
+    ],
   },
   {
     title: "Contact",

@@ -26,4 +26,5 @@ export const ofcNav: OfcNavItem[] = [
     href: "/ecommerce-fulfillment/",
     children: SERVICE_NAV,
   },
+  { title: "Blog", href: "/blog/" },
 ];

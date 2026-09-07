@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { company } from "@/data/brandArchitecture";
 import { OFC_B2B_FULFILLMENT_PATH, OFC_WAREHOUSE_PATH } from "@/data/ofcNav";
 import { SERVICE_LANDINGS, servicePath } from "@/data/serviceLandings";
+import { publishedBlogs } from "@/data/blogs/publishedBlogs";
 
 export const dynamic = "force-static";
 
@@ -51,6 +52,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    {
+      url: `${company.url}/blog/`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    ...publishedBlogs.map((post) => ({
+      url: `${company.url}/blog/${post.slug}/`,
+      lastModified: new Date(post.modifiedDate),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     {
       url: `${company.url}/privacy-policy/`,
       lastModified,
