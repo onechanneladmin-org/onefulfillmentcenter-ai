@@ -46,6 +46,7 @@ export async function submitLead(lead: LeadSubmission): Promise<void> {
     message,
     role: lead.role ?? "Fulfillment Lead",
     source: lead.source,
+    websitePurpose: lead.source.includes("demo") ? "request_demo" : "contact_us",
     label: "onefulfillcenter",
     Subscribe: lead.subscribe ? "true" : "false",
     page: attribution.page,
