@@ -5,78 +5,86 @@ import { ArrowLeft, CalendarDays, UserRound } from "lucide-react";
 import { notFound } from "next/navigation";
 import OfcTwHeader from "@/components/solutions/OfcTwHeader";
 import SpatialFooter from "@/components/layout/SpatialFooter";
-import { getBlogBySlug, publishedBlogs } from "@/data/blogs/publishedBlogs";
+import {
+  BLOG_SITE_URL,
+  fetchBlogBySlug,
+  fetchBlogs,
+  formatDate,
+  getCategoryName,
+  stripHtml,
+} from "@/services/blogService";
 import { company } from "@/data/brandArchitecture";
 import "@/styles/ofc-tw.css";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
-// Keep a runtime fallback for OpenNext/Cloudflare. The known posts are still
-// pre-rendered, while the fallback avoids false 404s during cache propagation.
+export const revalidate = 300;
 export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return publishedBlogs.map((post) => ({ slug: post.slug }));
+export async function generateStaticParams() {
+  const { data } = await fetchBlogs({ limit: 50 });
+  return data.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogBySlug(slug);
+  const post = await fetchBlogBySlug(slug);
   if (!post) return {};
 
   const url = `${company.url}/blog/${post.slug}/`;
-  const image = post.featuredImage || `${company.url}/assets/img/logo/onefulfillcenter-logo.png`;
+  const seoTitle = post.seo?.metaTitle || post.seo?.title || post.title;
+  const seoDescription =
+    post.seo?.metaDescription || post.seo?.description || stripHtml(post.excerpt || "");
+  const image =
+    post.featuredImage ||
+    post.seo?.openGraphImageUrl ||
+    `${company.url}/assets/img/logo/onefulfillcenter-logo.png`;
 
   return {
-    title: { absolute: post.seoTitle },
-    description: post.seoDescription,
+    title: { absolute: seoTitle },
+    description: seoDescription,
     alternates: { canonical: url },
     openGraph: {
       type: "article",
-      title: post.seoTitle,
-      description: post.seoDescription,
+      title: seoTitle,
+      description: seoDescription,
       url,
-      images: [{ url: image, alt: post.featuredImageAlt }],
+      images: [{ url: image, alt: post.title }],
       publishedTime: post.publishedDate,
-      modifiedTime: post.modifiedDate,
-      authors: [post.author],
-      tags: post.tags.map((tag) => tag.name),
+      modifiedTime: post.updatedDate,
+      authors: post.author ? [post.author] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title: post.seoTitle,
-      description: post.seoDescription,
+      title: seoTitle,
+      description: seoDescription,
       images: [image],
     },
   };
 }
 
-const dateLabel = (date: string) =>
-  new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(new Date(date));
-
-const textContent = (html: string) =>
-  html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
-
 export default async function BlogDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getBlogBySlug(slug);
+  const post = await fetchBlogBySlug(slug);
   if (!post) notFound();
 
   const url = `${company.url}/blog/${post.slug}/`;
+  const seoDescription =
+    post.seo?.metaDescription || post.seo?.description || stripHtml(post.excerpt || "");
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.seoDescription,
-    image: post.featuredImage ? [`${company.url}${post.featuredImage}`] : undefined,
+    description: seoDescription,
+    image: post.featuredImage ? [post.featuredImage] : undefined,
     datePublished: post.publishedDate,
-    dateModified: post.modifiedDate,
+    dateModified: post.updatedDate || post.publishedDate,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    author: { "@type": "Organization", name: post.author, url: company.url },
+    author: {
+      "@type": "Organization",
+      name: post.author || company.name,
+      url: BLOG_SITE_URL,
+    },
     publisher: {
       "@type": "Organization",
       name: company.name,
@@ -86,8 +94,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
         url: `${company.url}/assets/img/logo/onefulfillcenter-logo.png`,
       },
     },
-    articleBody: textContent(post.contentHtml),
-    keywords: post.tags.map((tag) => tag.name).join(", "),
+    articleBody: stripHtml(post.content || ""),
   };
 
   return (
@@ -106,15 +113,19 @@ export default async function BlogDetailPage({ params }: PageProps) {
         <article className="ofc-article">
           <header className="ofc-article__header">
             <span className="spatial-kicker">
-              {post.categories[0]?.name || "Fulfillment insights"}
+              {getCategoryName(post.categories?.[0]) || "Fulfillment insights"}
             </span>
             <h1>{post.title}</h1>
             <div className="ofc-article__meta">
-              <time dateTime={post.publishedDate}>
-                <CalendarDays size={16} aria-hidden="true" />
-                {dateLabel(post.publishedDate)}
-              </time>
-              <span><UserRound size={16} aria-hidden="true" /> {post.author}</span>
+              {post.publishedDate ? (
+                <time dateTime={post.publishedDate}>
+                  <CalendarDays size={16} aria-hidden="true" />
+                  {formatDate(post.publishedDate)}
+                </time>
+              ) : null}
+              {post.author ? (
+                <span><UserRound size={16} aria-hidden="true" /> {post.author}</span>
+              ) : null}
             </div>
           </header>
 
@@ -122,9 +133,10 @@ export default async function BlogDetailPage({ params }: PageProps) {
             <div className="ofc-article__image">
               <Image
                 src={post.featuredImage}
-                alt={post.featuredImageAlt}
+                alt={post.title}
                 fill
                 priority
+                unoptimized
                 sizes="(min-width: 1000px) 900px, 100vw"
               />
             </div>
@@ -132,12 +144,15 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
           <div
             className="ofc-article__content"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            dangerouslySetInnerHTML={{ __html: post.content || "" }}
           />
 
-          {post.tags.length ? (
+          {Array.isArray(post.tags) && post.tags.length ? (
             <footer className="ofc-article__tags">
-              {post.tags.map((tag) => <span key={tag.slug}>#{tag.name}</span>)}
+              {post.tags.map((tag, idx) => {
+                const name = typeof tag === "string" ? tag : tag.name || tag.slug;
+                return <span key={idx}>#{name}</span>;
+              })}
             </footer>
           ) : null}
         </article>

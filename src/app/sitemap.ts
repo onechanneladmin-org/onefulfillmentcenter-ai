@@ -2,12 +2,13 @@ import type { MetadataRoute } from "next";
 import { company } from "@/data/brandArchitecture";
 import { OFC_B2B_FULFILLMENT_PATH, OFC_WAREHOUSE_PATH } from "@/data/ofcNav";
 import { SERVICE_LANDINGS, servicePath } from "@/data/serviceLandings";
-import { publishedBlogs } from "@/data/blogs/publishedBlogs";
+import { fetchBlogs } from "@/services/blogService";
 
-export const dynamic = "force-static";
+export const revalidate = 300;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+  const { data: posts } = await fetchBlogs({ limit: 50 });
 
   return [
     {
@@ -58,9 +59,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
-    ...publishedBlogs.map((post) => ({
+    ...posts.map((post) => ({
       url: `${company.url}/blog/${post.slug}/`,
-      lastModified: new Date(post.modifiedDate),
+      lastModified: post.updatedDate ? new Date(post.updatedDate) : lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),

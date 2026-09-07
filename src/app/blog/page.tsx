@@ -4,9 +4,11 @@ import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import OfcTwHeader from "@/components/solutions/OfcTwHeader";
 import SpatialFooter from "@/components/layout/SpatialFooter";
-import { publishedBlogs } from "@/data/blogs/publishedBlogs";
+import { fetchBlogs, formatDate, getCategoryName, stripHtml } from "@/services/blogService";
 import { company } from "@/data/brandArchitecture";
 import "@/styles/ofc-tw.css";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Fulfillment Blog & Ecommerce Logistics Guides",
@@ -22,30 +24,16 @@ export const metadata: Metadata = {
   },
 };
 
-const textExcerpt = (html: string) =>
-  html
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&hellip;|&#8230;/g, "…")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/\s+/g, " ")
-    .trim();
+export default async function BlogPage() {
+  const { data: posts } = await fetchBlogs({ limit: 50 });
 
-const dateLabel = (date: string) =>
-  new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).format(new Date(date));
-
-export default function BlogPage() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "OneFulfillCenter Fulfillment Blog",
     url: `${company.url}/blog/`,
     description: metadata.description,
-    mainEntity: publishedBlogs.map((post) => ({
+    mainEntity: posts.map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
       url: `${company.url}/blog/${post.slug}/`,
@@ -74,14 +62,15 @@ export default function BlogPage() {
         </section>
 
         <section className="spatial-wrap ofc-blog-grid" aria-label="Fulfillment articles">
-          {publishedBlogs.map((post) => (
-            <article className="ofc-blog-card" key={post.id}>
+          {posts.map((post) => (
+            <article className="ofc-blog-card" key={post._id || post.slug}>
               <Link href={`/blog/${post.slug}/`} className="ofc-blog-card__image">
                 {post.featuredImage ? (
                   <Image
                     src={post.featuredImage}
-                    alt={post.featuredImageAlt}
+                    alt={post.title}
                     fill
+                    unoptimized
                     sizes="(min-width: 1100px) 31vw, (min-width: 700px) 48vw, 100vw"
                   />
                 ) : (
@@ -90,14 +79,16 @@ export default function BlogPage() {
               </Link>
               <div className="ofc-blog-card__body">
                 <div className="ofc-blog-card__meta">
-                  <span>{post.categories[0]?.name || "Fulfillment"}</span>
-                  <time dateTime={post.publishedDate}>
-                    <CalendarDays size={14} aria-hidden="true" />
-                    {dateLabel(post.publishedDate)}
-                  </time>
+                  <span>{getCategoryName(post.categories?.[0]) || "Fulfillment"}</span>
+                  {post.publishedDate ? (
+                    <time dateTime={post.publishedDate}>
+                      <CalendarDays size={14} aria-hidden="true" />
+                      {formatDate(post.publishedDate)}
+                    </time>
+                  ) : null}
                 </div>
                 <h2><Link href={`/blog/${post.slug}/`}>{post.title}</Link></h2>
-                <p>{textExcerpt(post.excerptHtml)}</p>
+                <p>{stripHtml(post.excerpt || "")}</p>
                 <Link className="ofc-blog-card__more" href={`/blog/${post.slug}/`}>
                   Read article <ArrowRight size={16} aria-hidden="true" />
                 </Link>
