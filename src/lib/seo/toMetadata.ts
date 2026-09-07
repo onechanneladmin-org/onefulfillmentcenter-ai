@@ -1,7 +1,24 @@
 import type { Metadata } from "next";
 import { company } from "@/data/brandArchitecture";
+import { PUBLIC_SITE_ORIGIN } from "./config";
 import { hasCmsSeoFields } from "./fetchSeo";
 import type { SeoApiData, SeoFallback, SeoFetchResult } from "./types";
+
+const DEFAULT_OG_IMAGE = `${PUBLIC_SITE_ORIGIN}/assets/img/logo/onefulfillcenter-logo.png`;
+
+function sanitizeOgImage(imageUrl?: string | null, fallbackUrl: string = DEFAULT_OG_IMAGE): string {
+  if (!imageUrl || typeof imageUrl !== "string") return fallbackUrl;
+  const trimmed = imageUrl.trim();
+  if (
+    !trimmed ||
+    trimmed.includes("example.com") ||
+    trimmed.includes("placeholder") ||
+    !trimmed.startsWith("http")
+  ) {
+    return fallbackUrl;
+  }
+  return trimmed;
+}
 
 function asKeywords(value?: string | string[]) {
   if (!value) return undefined;
@@ -15,9 +32,21 @@ function asKeywords(value?: string | string[]) {
 
 function sanitizeCanonical(url?: string): string | undefined {
   if (!url) return undefined;
-  return url
-    .replace(/https?:\/\/test\.onefulfillcenter\.com/g, "https://onefulfillcenter.com")
-    .replace(/https?:\/\/onechanneladmin\.info/g, "https://onechanneladmin.com");
+  try {
+    const rawClean = url
+      .replace(/https?:\/\/test\.onefulfillcenter\.com/g, PUBLIC_SITE_ORIGIN)
+      .replace(/https?:\/\/onechanneladmin\.info/g, PUBLIC_SITE_ORIGIN);
+    const parsed = new URL(rawClean.startsWith("http") ? rawClean : `${PUBLIC_SITE_ORIGIN}${rawClean.startsWith("/") ? "" : "/"}${rawClean}`);
+    parsed.search = "";
+    parsed.hash = "";
+    parsed.hostname = new URL(PUBLIC_SITE_ORIGIN).hostname;
+    parsed.protocol = new URL(PUBLIC_SITE_ORIGIN).protocol;
+    parsed.port = "";
+    const clean = parsed.toString().replace(/\/+$/, "");
+    return clean ? `${clean}/` : `${PUBLIC_SITE_ORIGIN}/`;
+  } catch {
+    return undefined;
+  }
 }
 
 function stripHtml(input?: string): string {
@@ -84,10 +113,12 @@ export function seoResultToMetadata(
   const canonicalUrl = sanitizeCanonical(result.canonicalUrl || seo.canonicalUrl || undefined);
   const og = seo.openGraph || {};
   const twitter = seo.twitter || {};
-  const ogImage = fromCms ? og.imageUrl || result.seoData?.images?.[0] : undefined;
-  const twitterImage = fromCms
-    ? twitter.imageUrl || ogImage
+  const rawOgImage = fromCms ? og.imageUrl || result.seoData?.images?.[0] : undefined;
+  const ogImage = sanitizeOgImage(rawOgImage);
+  const rawTwitterImage = fromCms
+    ? twitter.imageUrl || rawOgImage
     : undefined;
+  const twitterImage = sanitizeOgImage(rawTwitterImage, ogImage);
 
   return {
     title,
@@ -105,7 +136,14 @@ export function seoResultToMetadata(
       url: canonicalUrl,
       siteName: company.name,
       type: ((fromCms && og.type) as "website") || "website",
-      images: ogImage ? [{ url: ogImage }] : undefined,
+      images: [
+        {
+          url: ogImage,
+          width: 900,
+          height: 194,
+          alt: typeof title === "string" ? title : title.absolute,
+        },
+      ],
     },
     twitter: {
       card:
@@ -113,7 +151,7 @@ export function seoResultToMetadata(
         "summary_large_image",
       title: (fromCms && twitter.title) || rawTitle,
       description: (fromCms && stripHtml(twitter.description)) || cleanDescription || undefined,
-      images: twitterImage ? [twitterImage] : undefined,
+      images: [twitterImage],
     },
   };
 }

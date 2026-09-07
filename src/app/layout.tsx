@@ -38,6 +38,21 @@ export const metadata: Metadata = {
     description:
       "Omni-channel 3PL fulfillment with a distributed warehouse network for brands and retailers.",
     url: company.url,
+    images: [
+      {
+        url: `${company.url}/assets/img/logo/onefulfillcenter-logo.png`,
+        width: 900,
+        height: 194,
+        alt: "OneFulfillCenter Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OneFulfillCenter | Next Generation Omni-Channel Fulfillment",
+    description:
+      "Omni-channel 3PL fulfillment with a distributed warehouse network for brands and retailers.",
+    images: [`${company.url}/assets/img/logo/onefulfillcenter-logo.png`],
   },
   icons: {
     icon: [{ url: "/favicon.png?v=20260717", type: "image/png" }],

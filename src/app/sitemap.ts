@@ -33,5 +33,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    {
+      url: `${company.url}/inventory-management/`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${company.url}/temperature-controlled-storage/`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${company.url}/kitting-assembly/`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${company.url}/privacy-policy/`,
+      lastModified,
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
+    },
+    {
+      url: `${company.url}/terms-of-service/`,
+      lastModified,
+      changeFrequency: "yearly" as const,
+      priority: 0.5,
+    },
   ];
 }
