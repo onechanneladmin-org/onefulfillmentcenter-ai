@@ -6,9 +6,13 @@ import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowUpRight,
   CheckCircle2,
+  Clock3,
   Compass,
+  Factory,
+  Gauge,
   Globe,
   MapPin,
+  Package,
   Truck,
   X,
 } from "lucide-react";
@@ -332,94 +336,130 @@ const WarehouseLocationsMap = () => {
         <AnimatePresence>
           {selectedHub ? (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              className="relative mt-8 overflow-hidden rounded-xl border border-orange-500/40 bg-gradient-to-br from-[#131924] via-[#111722] to-[#171d2b] p-6 shadow-2xl shadow-orange-950/30 sm:p-8"
+              exit={{ opacity: 0, y: 12 }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+              className="relative mt-6 overflow-hidden rounded-2xl border border-white/10 bg-[#0d121c] shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
             >
-              <button
-                type="button"
-                onClick={() => setSelectedHub(null)}
-                className="absolute top-6 right-6 cursor-pointer rounded-md bg-slate-800/80 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white"
-              >
-                <X className="h-5 w-5" />
-              </button>
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#f26522]/70 to-transparent" />
+              <div className="pointer-events-none absolute -top-24 right-0 h-48 w-48 rounded-full bg-[#f26522]/10 blur-3xl" />
 
-              <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8">
-                <div className="space-y-4 lg:col-span-5">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-lg bg-gradient-to-br from-[#f26522] to-orange-600 p-3 text-white shadow-lg shadow-orange-600/30">
-                      <MapPin className="h-7 w-7" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="rounded-md border border-orange-500/30 bg-orange-500/20 px-2.5 py-0.5 font-mono text-xs font-bold text-orange-400">
-                          {selectedHub.code}
-                        </span>
-                        <span className="flex items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-400">
-                          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                          {selectedHub.status}
-                        </span>
-                      </div>
-                      <h3 className="mt-1 text-xl font-bold text-white sm:text-2xl">
-                        {selectedHub.name}
-                      </h3>
-                      <p className="text-xs text-slate-400">{selectedHub.address}</p>
-                    </div>
+              <div className="relative flex flex-col gap-4 border-b border-white/8 px-5 py-5 sm:flex-row sm:items-start sm:justify-between sm:px-7 sm:py-6">
+                <div className="flex min-w-0 items-start gap-3.5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#f26522] text-white shadow-lg shadow-orange-600/25">
+                    <MapPin className="h-5 w-5" />
                   </div>
-
-                  <div className="grid grid-cols-2 gap-3 pt-2">
-                    <div className="rounded-lg border border-slate-800 bg-[#0b0e14]/80 p-3.5">
-                      <p className="text-[11px] font-medium text-slate-400">Facility Size</p>
-                      <p className="mt-0.5 text-base font-bold text-white">{selectedHub.sqft}</p>
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-md bg-orange-500/15 px-2 py-0.5 font-mono text-[11px] font-bold tracking-wide text-[#f26522]">
+                        {selectedHub.code}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] font-semibold text-emerald-400">
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                        {selectedHub.status}
+                      </span>
+                      <span className="rounded-full bg-white/5 px-2 py-0.5 text-[11px] font-medium text-slate-400">
+                        {selectedHub.region}
+                      </span>
                     </div>
-                    <div className="rounded-lg border border-slate-800 bg-[#0b0e14]/80 p-3.5">
-                      <p className="text-[11px] font-medium text-slate-400">Daily Outbound Flow</p>
-                      <p className="mt-0.5 text-base font-bold text-orange-400">
-                        {selectedHub.dailyCapacity}
-                      </p>
-                    </div>
-                    <div className="rounded-lg border border-slate-800 bg-[#0b0e14]/80 p-3.5">
-                      <p className="text-[11px] font-medium text-slate-400">Same-Day Cut-off</p>
-                      <p className="mt-0.5 text-base font-bold text-emerald-400">
-                        {selectedHub.cutoffTime}
-                      </p>
-                    </div>
-                    <div className="rounded-lg border border-slate-800 bg-[#0b0e14]/80 p-3.5">
-                      <p className="text-[11px] font-medium text-slate-400">Automation Level</p>
-                      <p className="mt-1 text-xs font-bold text-slate-200">
-                        {selectedHub.automationLevel}
-                      </p>
-                    </div>
+                    <h3 className="mt-1.5 text-xl font-bold tracking-tight text-white sm:text-2xl">
+                      {selectedHub.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-400">{selectedHub.address}</p>
                   </div>
                 </div>
 
-                <div className="space-y-4 lg:col-span-4">
-                  <div className="space-y-3 rounded-lg border border-slate-800 bg-[#0b0e14]/80 p-4">
-                    <p className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-[#f26522] uppercase">
-                      <Truck className="h-3.5 w-3.5" /> Ground Delivery Reach
-                    </p>
-                    <div>
-                      <p className="text-[11px] text-slate-400">1-Day Ground Delivery:</p>
-                      <p className="text-sm font-semibold text-white">{selectedHub.oneDayReach}</p>
+                <div className="flex shrink-0 items-center gap-2 self-end sm:self-start">
+                  <Link
+                    href="#newsletter"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#f26522] px-3.5 py-2 text-xs font-bold text-white transition-colors hover:bg-orange-600 sm:text-sm"
+                  >
+                    Store at {selectedHub.code}
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedHub(null)}
+                    aria-label="Close hub details"
+                    className="cursor-pointer rounded-lg border border-white/10 bg-white/5 p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="relative grid grid-cols-2 gap-px border-b border-white/8 bg-white/8 sm:grid-cols-4">
+                {[
+                  {
+                    icon: Factory,
+                    label: "Facility size",
+                    value: selectedHub.sqft,
+                    accent: "text-white",
+                  },
+                  {
+                    icon: Package,
+                    label: "Daily outbound",
+                    value: selectedHub.dailyCapacity,
+                    accent: "text-[#f26522]",
+                  },
+                  {
+                    icon: Clock3,
+                    label: "Same-day cut-off",
+                    value: selectedHub.cutoffTime,
+                    accent: "text-emerald-400",
+                  },
+                  {
+                    icon: Gauge,
+                    label: "Automation",
+                    value: selectedHub.automationLevel,
+                    accent: "text-slate-100",
+                  },
+                ].map((stat) => (
+                  <div key={stat.label} className="bg-[#0d121c] px-4 py-4 sm:px-5 sm:py-5">
+                    <div className="mb-2 flex items-center gap-1.5 text-[11px] font-medium tracking-wide text-slate-500 uppercase">
+                      <stat.icon className="h-3.5 w-3.5 text-slate-500" />
+                      {stat.label}
                     </div>
-                    <div>
-                      <p className="text-[11px] text-slate-400">2-Day Ground Delivery:</p>
-                      <p className="text-sm font-semibold text-emerald-400">
-                        {selectedHub.twoDayReach}
-                      </p>
+                    <p className={`text-sm font-bold leading-snug sm:text-[15px] ${stat.accent}`}>
+                      {stat.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="relative grid gap-6 px-5 py-5 sm:px-7 sm:py-6 lg:grid-cols-[1.15fr_0.85fr]">
+                <div className="space-y-5">
+                  <div>
+                    <p className="mb-3 flex items-center gap-1.5 text-[11px] font-bold tracking-[0.14em] text-[#f26522] uppercase">
+                      <Truck className="h-3.5 w-3.5" />
+                      Ground delivery reach
+                    </p>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <div className="rounded-xl border border-white/8 bg-white/[0.03] px-4 py-3.5">
+                        <p className="text-[11px] font-medium text-slate-500">1-day ground</p>
+                        <p className="mt-1 text-sm font-semibold leading-relaxed text-white">
+                          {selectedHub.oneDayReach}
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] px-4 py-3.5">
+                        <p className="text-[11px] font-medium text-emerald-500/80">2-day ground</p>
+                        <p className="mt-1 text-sm font-semibold leading-relaxed text-emerald-300">
+                          {selectedHub.twoDayReach}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
                   <div>
-                    <p className="mb-2 text-xs font-bold tracking-wider text-slate-400 uppercase">
-                      Connected Carriers On-Site:
+                    <p className="mb-3 text-[11px] font-bold tracking-[0.14em] text-slate-500 uppercase">
+                      Carriers on-site
                     </p>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {selectedHub.carriers.map((carrier) => (
                         <span
                           key={carrier}
-                          className="rounded-md border border-slate-700 bg-slate-800/80 px-2.5 py-1 text-xs font-medium text-slate-300"
+                          className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold text-slate-200"
                         >
                           {carrier}
                         </span>
@@ -428,26 +468,21 @@ const WarehouseLocationsMap = () => {
                   </div>
                 </div>
 
-                <div className="space-y-4 lg:col-span-3">
-                  <div className="space-y-2.5 rounded-lg border border-slate-800 bg-[#0b0e14]/80 p-4">
-                    <p className="text-xs font-bold tracking-wider text-slate-400 uppercase">
-                      Facility Capabilities:
-                    </p>
+                <div>
+                  <p className="mb-3 text-[11px] font-bold tracking-[0.14em] text-slate-500 uppercase">
+                    Facility capabilities
+                  </p>
+                  <ul className="space-y-2">
                     {selectedHub.features.map((feat) => (
-                      <div key={feat} className="flex items-center gap-2 text-xs text-slate-200">
-                        <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#f26522]" />
+                      <li
+                        key={feat}
+                        className="flex items-start gap-2.5 rounded-xl border border-white/8 bg-white/[0.03] px-3.5 py-2.5 text-sm text-slate-200"
+                      >
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#f26522]" />
                         <span>{feat}</span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
-
-                  <Link
-                    href="#newsletter"
-                    className="flex w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#f26522] to-orange-600 px-4 py-3 text-xs font-bold text-white shadow-lg shadow-orange-600/30 transition-all hover:from-orange-600 hover:to-orange-700 sm:text-sm"
-                  >
-                    <span>Store Inventory at {selectedHub.code}</span>
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
+                  </ul>
                 </div>
               </div>
             </motion.div>

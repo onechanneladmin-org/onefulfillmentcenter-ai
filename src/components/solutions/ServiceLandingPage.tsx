@@ -1,11 +1,15 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  BadgeDollarSign,
   Boxes,
   Check,
   Cpu,
+  Package,
   Plug,
+  Receipt,
   ShieldCheck,
+  Warehouse,
 } from "lucide-react";
 import OfcTwHeader from "./OfcTwHeader";
 import SpatialNav from "./SpatialNav";
@@ -101,27 +105,27 @@ const ONBOARDING = [
 ];
 
 const PRICING_FACTORS = [
-  "Monthly order volume",
-  "SKU count",
-  "Dimensions and weight",
-  "Storage needs",
-  "Lines per order",
-  "Packaging",
-  "Destinations",
-  "Returns volume",
-  "Kitting",
-];
+  { title: "Monthly order volume", hint: "Orders / month that set the base rate" },
+  { title: "SKU count", hint: "Catalog breadth and slot complexity" },
+  { title: "Dimensions and weight", hint: "Carton size drives packing & freight" },
+  { title: "Storage needs", hint: "Pallet, bin, and climate requirements" },
+  { title: "Lines per order", hint: "Multi-line picks cost more to assemble" },
+  { title: "Packaging", hint: "Branded inserts, void fill, custom kits" },
+  { title: "Destinations", hint: "Domestic zones and international lanes" },
+  { title: "Returns volume", hint: "RMA rate and restock handling" },
+  { title: "Kitting", hint: "Assembly, bundling, and value-add work" },
+] as const;
 
 const COST_CATEGORIES = [
-  "Receiving",
-  "Storage",
-  "Pick and pack",
-  "Packaging",
-  "Shipping",
-  "Kitting",
-  "Returns",
-  "Projects",
-];
+  { title: "Receiving", hint: "Inbound ASN, putaway, QC" },
+  { title: "Storage", hint: "Occupied slots billed monthly" },
+  { title: "Pick and pack", hint: "Per-order and per-line work" },
+  { title: "Packaging", hint: "Materials and branded inserts" },
+  { title: "Shipping", hint: "Carrier labels with rate shopping" },
+  { title: "Kitting", hint: "Build kits before peak demand" },
+  { title: "Returns", hint: "Inspect, restock, or disposition" },
+  { title: "Projects", hint: "Special ops and one-off work" },
+] as const;
 
 const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
   const related = relatedServices(page);
@@ -137,7 +141,7 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
   };
 
   return (
-    <div className="ofc-tw spatial-page">
+    <div className="ofc-tw spatial-page service-spatial">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -168,6 +172,9 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
                 <a className="spatial-btn spatial-btn--teal" href={`mailto:${company.investorEmail}`}>
                   Talk to a specialist
                 </a>
+                <a className="spatial-btn spatial-btn--ghost" href="#process">
+                  See how it works
+                </a>
               </div>
               <ul className="spatial-trust">
                 {TRUST.map((item) => (
@@ -196,6 +203,7 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
             <article className="spatial-main">
               <section className="spatial-block">
                 <header className="spatial-block__head">
+                  <p className="spatial-kicker">Challenges</p>
                   <h2>{page.problemsTitle}</h2>
                   <p>
                     These issues usually show up together. OneFulfillCenter treats warehousing,
@@ -218,6 +226,7 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
 
               <section id="process" className="spatial-block">
                 <header className="spatial-block__head">
+                  <p className="spatial-kicker">Process</p>
                   <h2>{page.processTitle}</h2>
                   <p>{page.howItWorksAnswer}</p>
                 </header>
@@ -246,6 +255,7 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
 
               <section id="capabilities" className="spatial-block">
                 <header className="spatial-block__head">
+                  <p className="spatial-kicker">Capabilities</p>
                   <h2>{page.featuresTitle}</h2>
                 </header>
                 <div className="spatial-bento">
@@ -274,6 +284,7 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
 
               <section className="spatial-block">
                 <header className="spatial-block__head">
+                  <p className="spatial-kicker">Outcomes</p>
                   <h2>What your operation gains</h2>
                 </header>
                 <ul className="spatial-gain">
@@ -323,6 +334,7 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
 
               <section className="spatial-block">
                 <header className="spatial-block__head">
+                  <p className="spatial-kicker">Who it&apos;s for</p>
                   <h2>Built for growing commerce teams</h2>
                   <p>{page.whoNeedsAnswer}</p>
                 </header>
@@ -382,6 +394,7 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
 
               <section className="spatial-block">
                 <header className="spatial-block__head">
+                  <p className="spatial-kicker">Onboarding</p>
                   <h2>Onboard without stopping sales</h2>
                 </header>
                 <ol className="spatial-flow">
@@ -395,33 +408,81 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
                 </ol>
               </section>
 
-              <section id="pricing" className="spatial-block">
+              <section id="pricing" className="spatial-block spatial-pricing">
                 <header className="spatial-block__head">
+                  <p className="spatial-kicker">
+                    <BadgeDollarSign size={14} /> Pricing
+                  </p>
                   <h2>Pricing around your operation</h2>
                   <p>{page.costAnswer}</p>
                 </header>
-                <div className="spatial-price">
-                  <div>
-                    <h3>What we quote against</h3>
-                    <ul>
+
+                <div className="spatial-pricing__grid">
+                  <div className="spatial-pricing__panel">
+                    <div className="spatial-pricing__panel-head">
+                      <span className="spatial-pricing__icon">
+                        <Package size={18} />
+                      </span>
+                      <div>
+                        <h3>What we quote against</h3>
+                        <p>Inputs that shape your rate card</p>
+                      </div>
+                    </div>
+                    <ul className="spatial-pricing__list">
                       {PRICING_FACTORS.map((item) => (
-                        <li key={item}>{item}</li>
+                        <li key={item.title}>
+                          <Check size={14} />
+                          <div>
+                            <strong>{item.title}</strong>
+                            <span>{item.hint}</span>
+                          </div>
+                        </li>
                       ))}
                     </ul>
                   </div>
-                  <div>
-                    <h3>Cost categories</h3>
-                    <ul>
+
+                  <div className="spatial-pricing__panel spatial-pricing__panel--accent">
+                    <div className="spatial-pricing__panel-head">
+                      <span className="spatial-pricing__icon spatial-pricing__icon--teal">
+                        <Receipt size={18} />
+                      </span>
+                      <div>
+                        <h3>Cost categories</h3>
+                        <p>Where spend typically shows up</p>
+                      </div>
+                    </div>
+                    <div className="spatial-pricing__cats">
                       {COST_CATEGORIES.map((item) => (
-                        <li key={item}>{item}</li>
+                        <article key={item.title}>
+                          <Warehouse size={16} />
+                          <div>
+                            <h4>{item.title}</h4>
+                            <p>{item.hint}</p>
+                          </div>
+                        </article>
                       ))}
-                    </ul>
+                    </div>
                   </div>
+                </div>
+
+                <div className="spatial-pricing__cta">
+                  <div>
+                    <h3>Get a quote built for your SKUs</h3>
+                    <p>
+                      Share volume, channels, and packaging needs — we map a clear rate card
+                      without surprise add-ons.
+                    </p>
+                  </div>
+                  <a className="spatial-btn spatial-btn--teal" href={`mailto:${company.investorEmail}`}>
+                    Request pricing
+                    <ArrowRight size={16} />
+                  </a>
                 </div>
               </section>
 
               <section id="faq" className="spatial-block">
                 <header className="spatial-block__head">
+                  <p className="spatial-kicker">FAQ</p>
                   <h2>Questions teams ask first</h2>
                 </header>
                 <div className="spatial-faq">
@@ -444,6 +505,21 @@ const ServiceLandingPage = ({ page }: { page: ServiceLanding }) => {
                     </Link>
                   ))}
                 </div>
+              </section>
+
+              <section className="spatial-cta-band">
+                <div>
+                  <p className="spatial-kicker">Next step</p>
+                  <h2>Ready to move {page.name.toLowerCase()} onto 1FC?</h2>
+                  <p>
+                    Tell us your channels, SKUs, and volume. We&apos;ll map the floor workflow and a
+                    clear quote.
+                  </p>
+                </div>
+                <a className="spatial-btn spatial-btn--teal" href={`mailto:${company.investorEmail}`}>
+                  Talk to a specialist
+                  <ArrowRight size={16} />
+                </a>
               </section>
             </article>
           </div>
