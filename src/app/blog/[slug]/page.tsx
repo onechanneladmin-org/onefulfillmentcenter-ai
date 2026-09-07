@@ -11,7 +11,9 @@ import "@/styles/ofc-tw.css";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
-export const dynamicParams = false;
+// Keep a runtime fallback for OpenNext/Cloudflare. The known posts are still
+// pre-rendered, while the fallback avoids false 404s during cache propagation.
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return publishedBlogs.map((post) => ({ slug: post.slug }));
