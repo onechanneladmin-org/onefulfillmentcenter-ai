@@ -8,6 +8,7 @@ export function getSeoApiHeaders(extra: Record<string, string> = {}) {
   return {
     "Content-Type": "application/json",
     Accept: "application/json",
+    "User-Agent": "OneFulfillCenter-BFF/1.0 (Next.js SSR; +https://onefulfillcenter.com)",
     label: SEO_APP_LABEL,
     clientname: SEO_CLIENT_NAME,
     ...extra,

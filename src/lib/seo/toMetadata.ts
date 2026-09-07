@@ -13,6 +13,13 @@ function asKeywords(value?: string | string[]) {
   return parts.length ? parts : undefined;
 }
 
+function sanitizeCanonical(url?: string): string | undefined {
+  if (!url) return undefined;
+  return url
+    .replace(/https?:\/\/test\.onefulfillcenter\.com/g, "https://onefulfillcenter.com")
+    .replace(/https?:\/\/onechanneladmin\.info/g, "https://onechanneladmin.com");
+}
+
 function stripHtml(input?: string): string {
   if (!input) return "";
   return input
@@ -74,7 +81,7 @@ export function seoResultToMetadata(
     asKeywords(fallback.keywords) ||
     asKeywords(seo.metaKeywords) ||
     asKeywords(result.seoData?.keywords);
-  const canonicalUrl = result.canonicalUrl || seo.canonicalUrl || undefined;
+  const canonicalUrl = sanitizeCanonical(result.canonicalUrl || seo.canonicalUrl || undefined);
   const og = seo.openGraph || {};
   const twitter = seo.twitter || {};
   const ogImage = fromCms ? og.imageUrl || result.seoData?.images?.[0] : undefined;
@@ -130,7 +137,7 @@ export function getStructuredData(result: SeoFetchResult, fallbackTitle?: string
     "@type": "WebPage",
     name: title,
     description: stripHtml(description),
-    url: result.canonicalUrl,
+    url: sanitizeCanonical(result.canonicalUrl),
     isPartOf: {
       "@type": "WebSite",
       name: company.name,

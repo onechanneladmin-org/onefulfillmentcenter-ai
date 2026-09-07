@@ -39,6 +39,7 @@ yarn-error.log*
 .wrangler/
 .dev.vars
 .mf/
+.open-next/
 
 # typescript
 *.tsbuildinfo

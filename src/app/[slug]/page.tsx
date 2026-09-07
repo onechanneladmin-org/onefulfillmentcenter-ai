@@ -10,7 +10,7 @@ import {
 } from "@/data/serviceLandings";
 
 export const revalidate = 60;
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 type PageProps = {
   params: Promise<{ slug: string }>;
