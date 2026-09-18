@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "@/styles/index.scss";
 import { company } from "@/data/brandArchitecture";
 
@@ -104,6 +105,13 @@ export default function RootLayout({
       </head>
       <body className="oc-site">
         {children}
+        <Script
+          src="https://aichat.onechanneladmin.com/widget.js"
+          strategy="afterInteractive"
+          data-aichat-client="onechanneladmin"
+          data-aichat-api="http://aichatbackend.onechanneladmin.com"
+          data-aichat-website="onefulfillcenter"
+        />
       </body>
     </html>
   );
