@@ -18,7 +18,7 @@ const footerColumns = [
     title: "Resources",
     links: [
       { label: "Fulfillment Blog", href: "/blog/" },
-      { label: "Request a Demo", href: "/#newsletter" },
+      { label: "Request a Demo", href: company.demoUrl },
     ],
   },
   {

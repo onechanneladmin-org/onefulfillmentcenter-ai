@@ -270,13 +270,16 @@ const WarehousingInventoryStoragePage = () => {
                 <span>8730 Lake Road, Suite 300, Orlando, FL 32819 US</span>
               </p>
               <p>
-                <a href="tel:+18004493317" className="hover:text-white">
-                  +1-800-449-3317
+                <a
+                  href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
+                  className="hover:text-white"
+                >
+                  {company.phone}
                 </a>
               </p>
               <p>
-                <a href="mailto:marketing@onefulfillcenter.com" className="hover:text-white">
-                  marketing@onefulfillcenter.com
+                <a href={`mailto:${company.investorEmail}`} className="hover:text-white">
+                  {company.investorEmail}
                 </a>
               </p>
               <p className="pt-2 text-xs text-white/40">{company.address}</p>

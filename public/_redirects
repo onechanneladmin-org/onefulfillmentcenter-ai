@@ -1,17 +1,16 @@
 # OneFulfillCenter 301 Redirects
 
-# Demo & Contact
-/requestdemo/ /#newsletter 301
-/requestdemo /#newsletter 301
-/request-demo/ /#newsletter 301
-/request-demo /#newsletter 301
+# Demo (legacy path)
+/requestdemo/ /request-demo/ 301
+/requestdemo /request-demo/ 301
+/demo/ /request-demo/ 301
+/demo /request-demo/ 301
+
+# Contact
 /contact-us/ /#newsletter 301
 /contact-us /#newsletter 301
 /contact/ /#newsletter 301
 /contact /#newsletter 301
-/demo/ /#newsletter 301
-/demo /#newsletter 301
-
 # Core Solutions
 /b2c-b2b-wholesale-fulfillment/ /solutions/b2c-b2b-wholesale-fulfillment/ 301
 /b2c-b2b-wholesale-fulfillment /solutions/b2c-b2b-wholesale-fulfillment/ 301

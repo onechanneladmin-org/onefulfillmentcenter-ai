@@ -11,12 +11,12 @@ export const company = {
     process.env.PUBLIC_SITE_ORIGIN ||
     "https://onefulfillcenter.com"
   ).replace(/\/+$/, ""),
-  demoUrl: "#newsletter",
+  demoUrl: "/request-demo/",
   demoCta: "Request a Demo",
   leadEndpoint: "https://backend.onechanneladmin.com/inventory/customer/createContact?skipCloudFlare=true",
-  investorEmail: "sales@onechanneladmin.com",
+  investorEmail: "sales@onefulfillcenter.com",
   investorSubject: "Fulfillment inquiry with One Fulfillment Center",
-  phone: "+1 (888) 610-2044",
+  phone: "+1-888-815-0306",
   address: "8 W Darlington Ave, Kissimmee, FL 34746",
   facebookUrl: "https://www.facebook.com/people/Onechanneladmin/61556811086501/",
   instagramUrl: "https://www.instagram.com/onechanneladmin/",

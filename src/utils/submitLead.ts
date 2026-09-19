@@ -56,10 +56,7 @@ export async function submitLead(lead: LeadSubmission): Promise<void> {
 
   const response = await fetch(company.leadEndpoint, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: payload.toString(),
+    body: payload,
   });
 
   if (!response.ok) {

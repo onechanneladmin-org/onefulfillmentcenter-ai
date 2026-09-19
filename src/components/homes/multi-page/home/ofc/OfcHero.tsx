@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { company } from "@/data/brandArchitecture";
 
 const OfcHero = () => {
   return (
@@ -29,7 +30,7 @@ const OfcHero = () => {
           deliver orders swiftly.
         </p>
         <div className="ofc-hero__actions">
-            <Link className="ofc-btn ofc-btn--primary" href="#newsletter">
+            <Link className="ofc-btn ofc-btn--primary" href={company.demoUrl}>
               Request a Demo
             </Link>
           <Link className="ofc-btn ofc-btn--ghost" href="#how-it-works">

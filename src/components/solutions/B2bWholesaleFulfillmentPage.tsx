@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import OfcTwHeader from "./OfcTwHeader";
 import { OFC_B2B_FULFILLMENT_PATH, OFC_WAREHOUSE_PATH } from "@/data/ofcNav";
-import { socialLinks } from "@/data/brandArchitecture";
+import { company, socialLinks } from "@/data/brandArchitecture";
 
 const HUB = [
   { label: "E-commerce store", icon: Store, angle: -30 },
@@ -184,7 +184,7 @@ const B2bWholesaleFulfillmentPage = () => {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
-                  href="/#newsletter"
+                  href={company.demoUrl}
                   className="inline-flex items-center gap-2 rounded-full bg-[#2fd3c8] px-6 py-3 text-sm font-bold text-[#04201e] transition hover:-translate-y-0.5"
                 >
                   Request a Demo
@@ -310,7 +310,7 @@ const B2bWholesaleFulfillmentPage = () => {
               </p>
             </div>
             <Link
-              href="/#newsletter"
+              href={company.demoUrl}
               className="inline-flex items-center gap-2 rounded-full bg-[#f5c542] px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5"
             >
               Talk to sales
@@ -336,13 +336,16 @@ const B2bWholesaleFulfillmentPage = () => {
                 <span>8730 Lake Road, Suite 300, Orlando, FL 32819 US</span>
               </p>
               <p>
-                <a href="tel:+18004493317" className="hover:text-white">
-                  +1-800-449-3317
+                <a
+                  href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
+                  className="hover:text-white"
+                >
+                  {company.phone}
                 </a>
               </p>
               <p>
-                <a href="mailto:marketing@onefulfillcenter.com" className="hover:text-white">
-                  marketing@onefulfillcenter.com
+                <a href={`mailto:${company.investorEmail}`} className="hover:text-white">
+                  {company.investorEmail}
                 </a>
               </p>
             </div>
@@ -371,7 +374,7 @@ const B2bWholesaleFulfillmentPage = () => {
             <h4 className="mb-4 text-sm font-bold">Get started</h4>
             <ul className="space-y-2 text-sm text-[#9aa6b8]">
               <li>
-                <Link href="/#newsletter" className="hover:text-white">
+                <Link href={company.demoUrl} className="hover:text-white">
                   Request a Demo
                 </Link>
               </li>

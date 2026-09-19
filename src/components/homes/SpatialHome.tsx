@@ -111,7 +111,7 @@ const FOOTER_COLS = [
     title: "Resources",
     links: [
       { label: "Fulfillment Blog", href: "/blog/" },
-      { label: "Request a Demo", href: "#newsletter" },
+      { label: "Request a Demo", href: company.demoUrl },
     ],
   },
   {
@@ -155,7 +155,7 @@ const SpatialHome = () => {
                 efficiently.
               </p>
               <div className="spatial-cta-row">
-                <Link className="spatial-btn spatial-btn--lime" href="#newsletter">
+                <Link className="spatial-btn spatial-btn--lime" href={company.demoUrl}>
                   Request a Demo
                   <Send size={16} aria-hidden="true" />
                 </Link>

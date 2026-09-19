@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
-import { toast } from "react-toastify";
 import { company, socialLinks } from "@/data/brandArchitecture";
 import { SERVICE_NAV } from "@/data/ofcNav";
-import { submitLead } from "@/utils/submitLead";
+import NewsletterSubscribeForm from "@/components/forms/NewsletterSubscribeForm";
 
 const phoneTel = `tel:${company.phone.replace(/[^+\d]/g, "")}`;
 
@@ -21,7 +19,7 @@ const FOOTER_COLS = [
   },
   {
     title: "Get Started",
-    links: [{ label: "Request a Demo", href: "#newsletter" }],
+    links: [{ label: "Request a Demo", href: company.demoUrl }],
   },
   {
     title: "Contact",
@@ -33,49 +31,17 @@ const FOOTER_COLS = [
 ] as const;
 
 const OfcNewsletterFooter = () => {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
-
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!email.trim() || status === "submitting") return;
-    try {
-      setStatus("submitting");
-      await submitLead({
-        email: email.trim(),
-        source: "onefulfillcenter.com/#newsletter",
-        subscribe: true,
-        message: "Newsletter subscription & demo interest from OneFulfillCenter footer",
-      });
-      setStatus("sent");
-      setEmail("");
-      toast.success("Thank you for subscribing! Our fulfillment team will be in touch.");
-    } catch {
-      setStatus("idle");
-      toast.error("Subscription failed. Please email sales@onechanneladmin.com directly.");
-    }
-  };
-
   return (
     <>
       <section className="ofc-newsletter" id="newsletter">
         <div className="ofc-container">
           <div className="ofc-newsletter__bar">
             <h3>Subscribe Newsletter to Get Updates</h3>
-            <form className="ofc-newsletter__form" onSubmit={onSubmit}>
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="Enter your email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                aria-label="Email address"
-              />
-              <button className="ofc-btn ofc-btn--primary" type="submit" disabled={status === "submitting"}>
-                {status === "submitting" ? "Submitting..." : status === "sent" ? "Subscribed" : "Subscribe"}
-              </button>
-            </form>
+            <NewsletterSubscribeForm
+              formClassName="ofc-newsletter__form"
+              buttonClassName="ofc-btn ofc-btn--primary"
+              placement="footer"
+            />
           </div>
         </div>
       </section>

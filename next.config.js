@@ -19,12 +19,7 @@ const nextConfig = {
       // Legacy WordPress demo & contact paths
       {
         source: "/requestdemo",
-        destination: "/#newsletter",
-        permanent: true,
-      },
-      {
-        source: "/request-demo",
-        destination: "/#newsletter",
+        destination: "/request-demo/",
         permanent: true,
       },
       {

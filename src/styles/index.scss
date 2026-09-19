@@ -4949,6 +4949,34 @@ main:has(.oc-policy-hub) {
   margin-top: 4px;
 }
 
+.oc-request-demo-page {
+  background: #070b12;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+.oc-request-demo-page .oc-request-demo-area {
+  padding-top: 140px;
+}
+
+.oc-request-demo-page .tp-section-title,
+.oc-request-demo-page .tp-section-title-wrapper p,
+.oc-request-demo-page .oc-demo-points li {
+  color: #e2e8f0;
+}
+
+.oc-request-demo-page .tp-section-sub-title {
+  color: #38bdf8;
+}
+
+.oc-request-demo-page .tp-contact-location-title {
+  color: #94a3b8;
+}
+
+.oc-request-demo-page .tp-contact-location a {
+  color: #f8fafc;
+}
+
 /* ---------------------------------------- */
 /* Contact / demo location blocks:           */
 /* prevent text clipping on smaller screens  */
