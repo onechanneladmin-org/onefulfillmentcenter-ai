@@ -16,7 +16,10 @@ import {
 import { company } from "@/data/brandArchitecture";
 import "@/styles/ofc-tw.css";
 
-type PageProps = { params: Promise<{ slug: string }> };
+type PageProps = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ preview?: string }>;
+};
 
 export const revalidate = 300;
 export const dynamicParams = true;
@@ -26,9 +29,13 @@ export async function generateStaticParams() {
   return data.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await fetchBlogBySlug(slug);
+  const { preview } = await searchParams;
+  const post = await fetchBlogBySlug(slug, preview);
   if (!post) return {};
 
   const url = `${company.url}/blog/${post.slug}/`;
@@ -43,6 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: { absolute: seoTitle },
     description: seoDescription,
+    robots: preview?.trim() ? { index: false, follow: false } : undefined,
     alternates: { canonical: url },
     openGraph: {
       type: "article",
@@ -63,9 +71,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function BlogDetailPage({ params }: PageProps) {
+export default async function BlogDetailPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
-  const post = await fetchBlogBySlug(slug);
+  const { preview } = await searchParams;
+  const previewMode = Boolean(preview?.trim());
+  const post = await fetchBlogBySlug(slug, preview);
   if (!post) notFound();
 
   const url = `${company.url}/blog/${post.slug}/`;
@@ -109,6 +119,24 @@ export default async function BlogDetailPage({ params }: PageProps) {
         <Link href="/blog/" className="ofc-article-back">
           <ArrowLeft size={17} aria-hidden="true" /> Back to all articles
         </Link>
+
+        {previewMode ? (
+          <p
+            className="ofc-blog-preview-banner"
+            role="status"
+            style={{
+              marginBottom: '1.25rem',
+              padding: '0.75rem 1rem',
+              borderRadius: '0.5rem',
+              border: '1px solid #fcd34d',
+              background: '#fffbeb',
+              color: '#78350f',
+              fontSize: '0.875rem',
+            }}
+          >
+            Draft preview — not public until published in admin.
+          </p>
+        ) : null}
 
         <article className="ofc-article">
           <header className="ofc-article__header">

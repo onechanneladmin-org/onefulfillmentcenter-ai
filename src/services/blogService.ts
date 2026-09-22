@@ -161,20 +161,44 @@ export async function fetchBlogs(options?: {
   }
 }
 
-export async function fetchBlogBySlug(slug: string): Promise<BlogItem | null> {
+function blogDetailQuery(previewToken?: string | null): string {
+  const params = new URLSearchParams({ label: BLOG_LABEL });
+  if (previewToken?.trim()) {
+    params.set('preview', previewToken.trim());
+  }
+  return params.toString();
+}
+
+function blogInventoryHeaders(): Record<string, string> {
+  const host = PUBLIC_SITE_ORIGIN.replace(/^https?:\/\//, '');
+  return {
+    Accept: 'application/json',
+    clientname: BLOG_CLIENT_NAME,
+    label: BLOG_LABEL,
+    'x-forwarded-host': host,
+  };
+}
+
+function blogFetchCache(previewToken?: string | null) {
+  return previewToken?.trim()
+    ? ({ cache: 'no-store' as const })
+    : ({ next: { revalidate: 300 } });
+}
+
+export async function fetchBlogBySlug(
+  slug: string,
+  previewToken?: string | null,
+): Promise<BlogItem | null> {
   if (!slug) return null;
   const cleanSlug = encodeURIComponent(slug.trim().toLowerCase());
+  const query = blogDetailQuery(previewToken);
 
   try {
     const response = await fetch(
-      `${BLOG_API_BASE}/prod/blogs/${cleanSlug}?label=${BLOG_LABEL}`,
+      `${BLOG_API_BASE}/prod/blogs/${cleanSlug}?${query}`,
       {
-        headers: {
-          Accept: 'application/json',
-          clientname: BLOG_CLIENT_NAME,
-          label: BLOG_LABEL,
-        },
-        next: { revalidate: 300 },
+        headers: blogInventoryHeaders(),
+        ...blogFetchCache(previewToken),
       },
     );
 
@@ -194,15 +218,18 @@ export async function fetchBlogBySlug(slug: string): Promise<BlogItem | null> {
   }
 
   try {
+    const fallbackParams = new URLSearchParams({
+      label: BLOG_LABEL,
+      slug: slug.trim().toLowerCase(),
+    });
+    if (previewToken?.trim()) {
+      fallbackParams.set('preview', previewToken.trim());
+    }
     const response = await fetch(
-      `${BLOG_API_BASE}/prod/blogs?label=${BLOG_LABEL}&slug=${cleanSlug}`,
+      `${BLOG_API_BASE}/prod/blogs?${fallbackParams.toString()}`,
       {
-        headers: {
-          Accept: 'application/json',
-          clientname: BLOG_CLIENT_NAME,
-          label: BLOG_LABEL,
-        },
-        next: { revalidate: 300 },
+        headers: blogInventoryHeaders(),
+        ...blogFetchCache(previewToken),
       },
     );
 
