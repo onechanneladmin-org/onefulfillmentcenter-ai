@@ -1,0 +1,721 @@
+<meta name="dash-one-writer">
+<meta name="dash-form" content="dashboard">
+<style>
+  .seo { display: grid; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+  .seo h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+  .seo h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; text-wrap: balance; }
+  .seo h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: 0; }
+  .seo p { margin: 0; max-width: 72ch; line-height: 1.5; }
+  .seo-muted { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .seo-lede { color: var(--color-fg); }
+  .seo-tabs { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); }
+  .seo-tab { font: inherit; background: none; border: 0; border-bottom: 2px solid transparent; padding: var(--cds-pad-sm) var(--cds-pad-md); color: var(--color-fg-muted); cursor: pointer; }
+  .seo-tab[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg); }
+  .seo-tab:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+  .seo-section { display: grid; gap: var(--cds-gap-lg); min-width: 0; }
+  .seo-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: var(--cds-gap-md); }
+  .seo-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); min-width: 0; align-content: start; }
+  .seo-big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .seo-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--cds-gap-md); }
+  .seo-chart { position: relative; min-height: 240px; width: 100%; }
+  .seo-chart svg { display: block; width: 100%; overflow: visible; }
+  .seo-chart text { fill: var(--cds-text-secondary); font-size: var(--cds-font-size-caption); font-family: var(--font-anthropic-sans); }
+  .seo-chart .lbl { fill: var(--color-fg); }
+  .seo-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); box-shadow: var(--cds-shadow-popover); border-radius: var(--cds-radius); padding: var(--cds-pad-sm); font-size: var(--cds-font-size-caption); max-width: 260px; z-index: 2; }
+  .seo-tip b { display: block; color: var(--color-fg); }
+  .seo-tip span { display: block; color: var(--cds-text-secondary); }
+  .seo-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .seo-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .seo-controls { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: end; }
+  .seo-controls label { display: grid; gap: 4px; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .seo-input { font: inherit; padding: 6px 10px; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background-color: var(--color-bg); color: var(--color-fg); min-width: 0; width: 220px; max-width: 100%; }
+  .seo-tablewrap { overflow-x: auto; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); max-height: 640px; overflow-y: auto; }
+  .seo-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .seo-table th { position: sticky; top: 0; background: var(--color-panel); text-align: left; font-weight: var(--cds-font-weight-medium); padding: 8px 10px; border-bottom: 1px solid var(--color-border-line); white-space: nowrap; z-index: 1; }
+  .seo-table td { padding: 7px 10px; border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+  .seo-table td.num, .seo-table th.num { text-align: right; white-space: nowrap; }
+  .seo-table td.wrap { min-width: 220px; max-width: 420px; }
+  .seo-table td.kw { font-weight: var(--cds-font-weight-medium); white-space: nowrap; }
+  .seo-pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: var(--cds-font-size-caption); white-space: nowrap; border: 1px solid var(--color-border-line); }
+  .seo-pill.t1 { background: color-mix(in srgb, var(--color-ok) 18%, transparent); border-color: color-mix(in srgb, var(--color-ok) 45%, transparent); }
+  .seo-pill.t2 { background: color-mix(in srgb, var(--color-ok) 8%, transparent); }
+  .seo-pill.t4 { color: var(--color-fg-muted); }
+  .seo-pill.ex, .seo-pill.no { background: color-mix(in srgb, var(--color-bad) 12%, transparent); border-color: color-mix(in srgb, var(--color-bad) 35%, transparent); }
+  .seo-pill.yes { background: color-mix(in srgb, var(--color-ok) 18%, transparent); border-color: color-mix(in srgb, var(--color-ok) 45%, transparent); }
+  .seo-pill.part, .seo-pill.warn { background: color-mix(in srgb, var(--color-warn) 18%, transparent); border-color: color-mix(in srgb, var(--color-warn) 45%, transparent); }
+  .seo-pill.high { background: color-mix(in srgb, var(--color-bad) 12%, transparent); }
+  .seo-dl { display: grid; grid-template-columns: minmax(120px, 180px) 1fr; gap: 8px 16px; font-size: var(--cds-font-size-body); }
+  .seo-dl dt { color: var(--color-fg-muted); }
+  .seo-dl dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+  .seo-list { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
+  .seo-note { border-left: 3px solid var(--color-warn); padding: var(--cds-pad-sm) var(--cds-pad-md); background: color-mix(in srgb, var(--color-warn) 8%, transparent); border-radius: 0 var(--cds-radius) var(--cds-radius) 0; }
+  .seo details summary { cursor: pointer; font-weight: var(--cds-font-weight-medium); }
+  @media (max-width: 560px) { .seo-dl { grid-template-columns: 1fr; } .seo-input { width: 100%; } }
+</style>
+
+<div class="seo">
+  <header style="display:grid;gap:var(--cds-gap-sm)">
+    <h1 id="title">OneFulfillCenter SEO Intelligence</h1>
+    <p class="seo-lede" id="takeaway" data-read lang="en">OneFulfillCenter is on page 1 for <b data-draw="ofcPage1" data-source="overview" data-field="ofc_page1" data-row="0" class="dash-skeleton"></b> of the <b data-draw="checked" data-source="overview" data-field="checked" data-row="0" class="dash-skeleton"></b> commercial keywords checked on Google US. There are <b data-draw="tier1Lede" data-source="overview" data-field="tier1" data-row="0" class="dash-skeleton"></b> Tier 1 keywords to go after, and the site has <b data-draw="issuesLede" data-source="overview" data-field="site_issues" data-row="0" class="dash-skeleton"></b> URLs with an SEO issue.</p>
+    <p class="seo-muted">Research date 27 Nov 2026 · United States, English · Volumes from Google Keyword Planner are ranges, because the Ads account has no recent spend · Keyword difficulty and organic rank tracking are not available (Ahrefs not connected).</p>
+  </header>
+
+  <nav class="seo-tabs" role="tablist" aria-label="Dashboard sections">
+    <button class="seo-tab" role="tab" data-tab="overview" aria-selected="true">Overview</button>
+    <button class="seo-tab" role="tab" data-tab="keywords" aria-selected="false">Keywords</button>
+    <button class="seo-tab" role="tab" data-tab="pagemap" aria-selected="false">Page map</button>
+    <button class="seo-tab" role="tab" data-tab="competitors" aria-selected="false">Competitors</button>
+    <button class="seo-tab" role="tab" data-tab="serp" aria-selected="false">Google results</button>
+    <button class="seo-tab" role="tab" data-tab="site" aria-selected="false">Site audit</button>
+    <button class="seo-tab" role="tab" data-tab="plan" aria-selected="false">Action plan</button>
+    <button class="seo-tab" role="tab" data-tab="explorer" aria-selected="false">All Keyword Planner ideas</button>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section class="seo-section" id="overview" data-panel="overview">
+    <div class="seo-kpis">
+      <div class="seo-card" id="kpi-curated"><span class="seo-muted">Keywords mapped to pages</span><span class="seo-big dash-skeleton" data-draw="kCurated" data-source="overview" data-field="curated" data-row="0"></span><span class="seo-muted">Chosen from 8,841 Keyword Planner ideas</span></div>
+      <div class="seo-card" id="kpi-tier1"><span class="seo-muted">Tier 1 commercial keywords</span><span class="seo-big dash-skeleton" data-draw="kTier1" data-source="overview" data-field="tier1" data-row="0"></span><span class="seo-muted">Score 7.5+ and at least 100–1K searches a month</span></div>
+      <div class="seo-card" id="kpi-page1"><span class="seo-muted">Page-1 rankings today</span><span class="seo-big dash-skeleton" data-draw="kPage1" data-source="overview" data-field="ofc_page1" data-row="0"></span><span class="seo-muted">Out of <span data-draw="kChecked" data-source="overview" data-field="checked" data-row="0">—</span> keywords checked on Google US</span></div>
+      <div class="seo-card" id="kpi-issues"><span class="seo-muted">Site URLs with an issue</span><span class="seo-big dash-skeleton" data-draw="kIssues" data-source="overview" data-field="site_issues" data-row="0"></span><span class="seo-muted">Out of <span data-draw="kUrls" data-source="overview" data-field="site_urls" data-row="0">—</span> URLs crawled</span></div>
+    </div>
+
+    <div class="seo-grid2">
+      <div class="seo-card" id="chart-tiers">
+        <h2>Keywords by priority tier</h2>
+        <p class="seo-muted">Tier 1 = high-priority commercial. Tier 4 = informational (blog). Excluded = wrong intent for a 3PL.</p>
+        <div class="seo-chart" data-draw="tierChart" data-source="tiers"></div>
+      </div>
+      <div class="seo-card" id="chart-pages">
+        <h2>Keywords mapped to each page</h2>
+        <div class="seo-legend"><span><i data-draw="swAll"></i>All keywords</span><span><i data-draw="swT1"></i>Tier 1</span></div>
+        <div class="seo-chart" data-draw="pageChart" data-source="bypage"></div>
+      </div>
+    </div>
+
+    <div class="seo-card" id="chart-scatter">
+      <h2>Opportunity score against ad value</h2>
+      <p class="seo-muted">Each dot is a keyword. Higher on the chart means a better overall opportunity. Further right means advertisers pay more per click (top-of-page bid, high range), which signals buyers. Point at a dot to see the keyword.</p>
+      <div class="seo-legend" data-draw="scatterLegend"></div>
+      <div class="seo-chart" style="min-height:360px" data-draw="scatter" data-source="keywords"></div>
+    </div>
+
+    <div class="seo-card" id="top-opps">
+      <h2>Top 10 opportunities</h2>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="keywords" data-row-key="keyword">
+          <thead><tr><th data-field="keyword">Keyword</th><th data-field="volume">Searches / month</th><th class="num" data-field="bid_high">Top bid (high)</th><th class="num" data-field="score">Score</th><th data-field="tier">Tier</th><th data-field="page">Target page</th></tr></thead>
+          <tbody data-draw="topRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEYWORDS -->
+  <section class="seo-section" id="keywords" data-panel="keywords" hidden>
+    <div class="seo-card">
+      <h2>Master keyword database</h2>
+      <p class="seo-muted">Score = 25% commercial intent + 25% business relevance + 20% search demand + 20% ranking feasibility (an estimate from who ranks today, not keyword difficulty) + 10% conversion potential. Each factor is out of 10.</p>
+      <div class="seo-controls">
+        <label for="kw-search">Search<input id="kw-search" class="seo-input" type="search" placeholder="e.g. fba, kitting"></label>
+        <label for="kw-tier">Tier<select id="kw-tier" class="dash-select"><option value="">All tiers</option><option>Tier 1</option><option>Tier 2</option><option>Tier 3</option><option>Tier 4</option><option>Excluded</option></select></label>
+        <label for="kw-page">Target page<select id="kw-page" class="dash-select" data-draw="kwPageSelect" data-source="keywords"></select></label>
+        <label for="kw-intent">Intent<select id="kw-intent" class="dash-select"><option value="">All intents</option><option>Commercial / Transactional</option><option>Comparison</option><option>Informational</option><option>Navigational</option><option>Mixed / off-target</option></select></label>
+        <label for="kw-sort">Sort by<select id="kw-sort" class="dash-select"><option value="score">Score</option><option value="kp_value">Search volume</option><option value="bid_high">Top bid (high)</option><option value="keyword">Keyword A–Z</option></select></label>
+      </div>
+      <p class="seo-muted" data-draw="kwCount">—</p>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="keywords" data-row-key="keyword">
+          <thead><tr>
+            <th data-field="keyword">Keyword</th><th data-field="volume">Searches / month</th><th data-field="change_3m">3-mo change</th><th data-field="change_yoy">YoY change</th>
+            <th data-field="competition">Ads competition</th><th class="num" data-field="comp_index">Comp. index</th><th class="num" data-field="bid_low">Bid low</th><th class="num" data-field="bid_high">Bid high</th>
+            <th data-field="intent">Intent</th><th data-field="role">Role</th><th class="num" data-field="score">Score</th><th data-field="tier">Tier</th><th data-field="page">Target page</th>
+            <th data-field="ofc_rank">OneFulfillCenter on page 1?</th><th data-field="top_results">Who ranks now (top 5)</th><th data-field="notes">Notes</th>
+          </tr></thead>
+          <tbody data-draw="kwRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE MAP -->
+  <section class="seo-section" id="pagemap" data-panel="pagemap" hidden>
+    <div class="seo-card">
+      <h2>One primary keyword per page</h2>
+      <p class="seo-muted">Each existing page gets one primary keyword, so the pages don't compete with each other. Secondary and long-tail keywords support it.</p>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="pages" data-row-key="page">
+          <thead><tr><th data-field="page">Page</th><th data-field="primary">Primary keyword</th><th data-field="volume">Searches / month</th><th data-field="bid_range">Bid range</th><th data-field="competition">Ads competition</th><th data-field="priority">Priority</th><th data-field="secondary">Secondary keywords</th><th data-field="longtail">Long-tail keywords</th><th data-field="audience">Target audience</th><th data-field="gap">Keyword gap</th></tr></thead>
+          <tbody data-draw="pageRows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="seo-card" id="onpage">
+      <h2>On-page recommendations</h2>
+      <div class="seo-controls"><label for="op-page">Page<select id="op-page" class="dash-select" data-draw="opSelect" data-source="onpage"></select></label></div>
+      <dl class="seo-dl" data-source="onpage">
+        <dt>Primary keyword</dt><dd data-draw="opPrimary">—</dd>
+        <dt>SEO title</dt><dd data-draw="opTitle">—</dd>
+        <dt>Meta description</dt><dd data-draw="opMeta">—</dd>
+        <dt>H1</dt><dd data-draw="opH1">—</dd>
+        <dt>H2 / H3 outline</dt><dd data-draw="opStructure">—</dd>
+        <dt>Secondary keywords</dt><dd data-draw="opSecondary">—</dd>
+        <dt>FAQ ideas</dt><dd data-draw="opFaq">—</dd>
+        <dt>Internal links to add</dt><dd data-draw="opLinks">—</dd>
+        <dt>Schema</dt><dd data-draw="opSchema">—</dd>
+        <dt>Call to action</dt><dd data-draw="opCta">—</dd>
+      </dl>
+    </div>
+    <div class="seo-card" id="cannibal">
+      <h2>Overlapping pages and how to split them</h2>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="cannibal" data-row-key="conflict">
+          <thead><tr><th data-field="conflict">Overlap</th><th data-field="keywords">Keywords at risk</th><th data-field="decision">Decision</th><th data-field="assignment">How to assign them</th><th data-field="priority">Priority</th></tr></thead>
+          <tbody data-draw="canRows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="seo-card" id="links">
+      <h2>Internal links to add</h2>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="links" data-row-key="n">
+          <thead><tr><th data-field="source">From</th><th data-field="destination">To</th><th data-field="anchor">Anchor text</th><th data-field="reason">Why</th></tr></thead>
+          <tbody data-draw="linkRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETITORS -->
+  <section class="seo-section" id="competitors" data-panel="competitors" hidden>
+    <div class="seo-card">
+      <h2>Which competitors have a page for each service</h2>
+      <p class="seo-muted">Checked against each competitor's sitemap and pages on 27 Nov 2026. "Blog only" means the topic is covered by a blog post or a bullet point, not a dedicated service page. Your site has a dedicated page for all 12 services.</p>
+      <div class="seo-legend"><span><span class="seo-pill yes">Yes</span> dedicated page</span><span><span class="seo-pill part">Blog only</span> partial</span><span><span class="seo-pill no">No</span> no dedicated page</span></div>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="competitors" data-row-key="name">
+          <thead><tr><th data-field="name">Competitor</th><th data-field="ecommerce">Ecommerce</th><th data-field="b2b">B2B</th><th data-field="fba">FBA prep</th><th data-field="warehousing">Warehousing</th><th data-field="kitting">Kitting</th><th data-field="pickpack">Pick &amp; pack</th><th data-field="returns">Returns</th><th data-field="crossdock">Cross-docking</th><th data-field="storage">Storage</th><th data-field="subscription">Subscription</th><th data-field="retail">Retail / EDI</th><th data-field="pricing">Pricing</th><th data-field="locations">Locations</th><th data-field="comparison">Comparison</th></tr></thead>
+          <tbody data-draw="compRows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="seo-card" id="comp-detail">
+      <h2>Competitor profile</h2>
+      <div class="seo-controls"><label for="comp-pick">Competitor<select id="comp-pick" class="dash-select" data-draw="compSelect" data-source="competitors"></select></label></div>
+      <dl class="seo-dl" data-source="competitors">
+        <dt>Domain</dt><dd data-draw="cDomain">—</dd>
+        <dt>Positioning</dt><dd data-draw="cPos">—</dd>
+        <dt>Content patterns</dt><dd data-draw="cPatterns">—</dd>
+        <dt>Services without a dedicated page</dt><dd data-draw="cNotFound">—</dd>
+        <dt>Industries</dt><dd data-draw="cInd">—</dd>
+        <dt>Claims (as stated on their site)</dt><dd data-draw="cClaims">—</dd>
+      </dl>
+    </div>
+    <div class="seo-card" id="gap">
+      <h2>Keyword gap: who is on page 1</h2>
+      <p class="seo-muted">Position each site held in the Google US results checked on 27 Nov 2026. A dash means not in the observed top results.</p>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="gap" data-row-key="keyword">
+          <thead><tr><th data-field="keyword">Keyword</th><th data-field="volume">Searches / month</th><th data-field="onefulfillcenter">OneFulfillCenter</th><th data-field="flowspace">Flowspace</th><th data-field="stord">Stord</th><th data-field="shipbob">ShipBob</th><th data-field="shipmonk">ShipMonk</th><th data-field="dcl">DCL</th><th data-field="ryder">Ryder</th><th data-field="saddle_creek">Saddle Creek</th><th data-field="red_stag">Red Stag</th><th data-field="amz_prep">AMZ Prep</th><th data-field="prep_prime">Prep Prime</th><th data-field="top1">Ranked #1</th></tr></thead>
+          <tbody data-draw="gapRows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="seo-card" id="gapnotes">
+      <h2>What to do about each gap</h2>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="gapnotes" data-row-key="n">
+          <thead><tr><th data-field="keywords">Keywords</th><th data-field="why">Why it matters</th><th data-field="winning">Who is winning</th><th data-field="action">What to build or improve</th><th data-field="difficulty">Difficulty</th></tr></thead>
+          <tbody data-draw="gapNoteRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERP -->
+  <section class="seo-section" id="serp" data-panel="serp" hidden>
+    <div class="seo-card">
+      <h2>Live Google results (US)</h2>
+      <p class="seo-muted">Captured from Google.com on 27 Nov 2026 with personalization off. Treat it as a snapshot: results move, and the browser's location can affect them.</p>
+      <div class="seo-controls"><label for="serp-kw">Keyword<select id="serp-kw" class="dash-select" data-draw="serpSelect" data-source="serp"></select></label></div>
+      <p data-draw="serpRewards" data-source="serp" data-field="rewards">—</p>
+      <div data-draw="serpPaa">—</div>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="serp" data-row-key="keyword,position">
+          <thead><tr><th class="num" data-field="position">#</th><th data-field="domain">Domain</th><th data-field="url">Result (path shortened)</th><th data-field="page_type">Page type</th></tr></thead>
+          <tbody data-draw="serpRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITE -->
+  <section class="seo-section" id="site" data-panel="site" hidden>
+    <div class="seo-card">
+      <h2>Website SEO inventory</h2>
+      <div class="seo-controls">
+        <label for="site-filter">Show<select id="site-filter" class="dash-select"><option value="">All URLs</option><option value="Issue">Only URLs with an issue</option></select></label>
+        <label for="site-type">Page type<select id="site-type" class="dash-select" data-draw="siteTypeSelect" data-source="site"></select></label>
+      </div>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="site" data-row-key="url">
+          <thead><tr><th data-field="path">Path</th><th data-field="type">Type</th><th data-field="status">HTTP</th><th data-field="flag">Status</th><th data-field="title">Title (live)</th><th data-field="h1">H1 (live)</th><th class="num" data-field="words">Words</th><th data-field="primary">Recommended primary keyword</th><th data-field="issue">Issue / note</th></tr></thead>
+          <tbody data-draw="siteRows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="seo-note"><p>The homepage claims "1–2 day ground delivery to 99% of US customers" and shows 66 map locations, including 5 "Primary Superhubs". The only address in the site's schema is Kissimmee, FL. Confirm which facilities you operate before building location pages or repeating these claims.</p></div>
+  </section>
+
+  <!-- PLAN -->
+  <section class="seo-section" id="plan" data-panel="plan" hidden>
+    <div class="seo-card" id="roadmap">
+      <h2>90-day roadmap</h2>
+      <div class="seo-controls"><label for="rm-stage">Stage<select id="rm-stage" class="dash-select"><option value="">All stages</option><option>Days 1-30</option><option>Days 31-60</option><option>Days 61-90</option><option>KPIs (all stages)</option></select></label></div>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="roadmap" data-row-key="step">
+          <thead><tr><th data-field="stage">Stage</th><th data-field="workstream">Workstream</th><th data-field="action">Action</th><th data-field="owner">Owner</th><th data-field="kpi">How to measure it</th></tr></thead>
+          <tbody data-draw="roadRows"></tbody>
+        </table>
+      </div>
+      <p class="seo-muted">No first-page or #1 ranking is promised within 90 days.</p>
+    </div>
+    <div class="seo-card" id="newpages">
+      <h2>New pages to create</h2>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="newpages" data-row-key="url">
+          <thead><tr><th data-field="url">Proposed URL</th><th data-field="primary">Primary keyword</th><th data-field="volume">Searches / month</th><th data-field="bid_range">Bid range</th><th data-field="priority">Priority</th><th data-field="evidence">Why</th><th data-field="structure">Content outline</th><th data-field="competitors">Competitor pages</th></tr></thead>
+          <tbody data-draw="newRows"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="seo-card" id="blog">
+      <h2>Blog posts to publish</h2>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="blog" data-row-key="keyword">
+          <thead><tr><th data-field="keyword">Target keyword</th><th data-field="volume">Searches / month</th><th data-field="title">Proposed title</th><th data-field="url">URL</th><th data-field="service_page">Links to</th><th data-field="priority">Priority</th><th data-field="notes">Notes</th></tr></thead>
+          <tbody data-draw="blogRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORER -->
+  <section class="seo-section" id="explorer" data-panel="explorer" hidden>
+    <div class="seo-card">
+      <h2>All Keyword Planner ideas</h2>
+      <p class="seo-muted">Every idea from the 16 Keyword Planner exports that matched a service theme (5,431 of 8,841). Themes and intent here were sorted automatically by word patterns, so check before relying on one. The curated list on the Keywords tab is the reviewed set.</p>
+      <div class="seo-controls">
+        <label for="ex-search">Search<input id="ex-search" class="seo-input" type="search" placeholder="e.g. prep center"></label>
+        <label for="ex-theme">Theme<select id="ex-theme" class="dash-select" data-draw="exThemeSelect" data-source="kp_raw"></select></label>
+        <label for="ex-min">Minimum searches<select id="ex-min" class="dash-select"><option value="0">Any</option><option value="50">10–100 or more</option><option value="500">100–1K or more</option><option value="5000">1K–10K or more</option></select></label>
+      </div>
+      <p class="seo-muted" data-draw="exCount">—</p>
+      <div class="seo-tablewrap">
+        <table class="seo-table" data-source="kp_raw" data-row-key="keyword">
+          <thead><tr><th data-field="keyword">Keyword</th><th data-field="volume">Searches / month</th><th data-field="change_3m">3-mo change</th><th data-field="change_yoy">YoY change</th><th data-field="competition">Ads competition</th><th class="num" data-field="bid_low">Bid low</th><th class="num" data-field="bid_high">Bid high</th><th data-field="theme">Theme (auto)</th><th data-field="intent">Intent (auto)</th><th data-field="seed_groups">Seed group</th></tr></thead>
+          <tbody data-draw="exRows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <details id="method">
+    <summary>How this was researched</summary>
+    <ul class="seo-list seo-muted">
+      <li>Search volume, 3-month and year-over-year change, Google Ads competition and top-of-page bids come from Google Keyword Planner (United States, English, Nov 2025 – Oct 2026), exported on 27 Nov 2026.</li>
+      <li>Keyword Planner shows ranges such as 100–1K because the Ads account has no recent spend. The ranges are shown as given.</li>
+      <li>"Ads competition" is how many advertisers bid. It is not how hard it is to rank organically.</li>
+      <li>Ranking feasibility is an estimate from who ranks on Google today (big brands, software vendors, list articles, smaller 3PLs). Connect Ahrefs to replace it with keyword difficulty and rank tracking.</li>
+      <li>City and industry keyword volumes were not collected, so location and industry pages are marked "validate demand first".</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+  // Each dataset reads one key of the research bundle file.
+  const L = (key, description) => dash.loader(key, { description, fn: ({ answer }) => answer[key] });
+  dash.loader('keywords', { description: 'Takes the curated keyword list out of the research bundle.', fn: ({ answer }) => answer.keywords });
+  dash.loader('pages', { description: 'Takes the page-to-keyword map out of the research bundle.', fn: ({ answer }) => answer.pages });
+  dash.loader('site', { description: 'Takes the site crawl out of the research bundle.', fn: ({ answer }) => answer.site });
+  dash.loader('competitors', { description: 'Takes the competitor coverage table out of the research bundle.', fn: ({ answer }) => answer.competitors });
+  dash.loader('serp', { description: 'Takes the Google results snapshot out of the research bundle.', fn: ({ answer }) => answer.serp });
+  dash.loader('gap', { description: 'Takes the keyword gap matrix out of the research bundle.', fn: ({ answer }) => answer.gap });
+  dash.loader('gapnotes', { description: 'Takes the gap notes out of the research bundle.', fn: ({ answer }) => answer.gapnotes });
+  dash.loader('newpages', { description: 'Takes the new page list out of the research bundle.', fn: ({ answer }) => answer.newpages });
+  dash.loader('blog', { description: 'Takes the blog plan out of the research bundle.', fn: ({ answer }) => answer.blog });
+  dash.loader('cannibal', { description: 'Takes the page overlap table out of the research bundle.', fn: ({ answer }) => answer.cannibal });
+  dash.loader('onpage', { description: 'Takes the on-page recommendations out of the research bundle.', fn: ({ answer }) => answer.onpage });
+  dash.loader('links', { description: 'Takes the internal linking plan out of the research bundle.', fn: ({ answer }) => answer.links });
+  dash.loader('roadmap', { description: 'Takes the 90-day roadmap out of the research bundle.', fn: ({ answer }) => answer.roadmap });
+
+  dash.calc('overview', {
+    title: 'Headline figures',
+    description: 'Counts of mapped keywords, Tier 1 keywords, page-1 rankings in the checked results, and site URLs flagged with an issue.',
+    inputs: ['keywords', 'gap', 'site'],
+    fn: (keywords, gap, site) => [{
+      curated: keywords.filter((k) => k.tier !== 'Excluded').length,
+      tier1: keywords.filter((k) => k.tier === 'Tier 1').length,
+      checked: gap.length,
+      ofc_page1: gap.filter((g) => !String(g.onefulfillcenter).startsWith('Not')).length,
+      site_urls: site.length,
+      site_issues: site.filter((s) => s.flag === 'Issue').length,
+    }],
+  });
+  dash.calc('tiers', {
+    title: 'Keywords per tier',
+    description: 'Number of curated keywords in each priority tier.',
+    inputs: ['keywords'],
+    fn: (keywords) => ['Tier 1', 'Tier 2', 'Tier 3', 'Tier 4', 'Excluded'].map((tier) => ({ tier, count: keywords.filter((k) => k.tier === tier).length })),
+  });
+  dash.calc('bypage', {
+    title: 'Keywords per target page',
+    description: 'Number of curated keywords, and Tier 1 keywords, assigned to each existing or proposed page (excluded keywords left out).',
+    inputs: ['keywords'],
+    fn: (keywords) => {
+      const m = new Map();
+      for (const k of keywords) {
+        if (k.tier === 'Excluded') continue;
+        const r = m.get(k.page) || { page: k.page, keywords: 0, tier1: 0 };
+        r.keywords += 1; if (k.tier === 'Tier 1') r.tier1 += 1; m.set(k.page, r);
+      }
+      return [...m.values()].sort((a, b) => b.keywords - a.keywords);
+    },
+  });
+</script>
+
+<script>
+  // Tabs: show one section at a time and keep it in the link.
+  const tabs = document.querySelectorAll('.seo-tab');
+  const panels = document.querySelectorAll('[data-panel]');
+  function openTab(name) {
+    let found = false;
+    panels.forEach((p) => { const on = p.dataset.panel === name; p.hidden = !on; if (on) found = true; });
+    if (!found) return openTab('overview');
+    tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === name)));
+    dash.setLink(name);
+  }
+  tabs.forEach((t) => t.addEventListener('click', () => openTab(t.dataset.tab)));
+  const start = (location.hash || '').replace('#', '');
+  if (start) openTab(start);
+
+  // Filters redraw their tables.
+  const redraw = (id, draw) => { const el = document.getElementById(id); if (el) el.addEventListener(el.tagName === 'INPUT' ? 'input' : 'change', () => dash.draw(draw)); };
+  ['kw-search', 'kw-tier', 'kw-intent', 'kw-sort'].forEach((id) => redraw(id, 'kwRows'));
+  ['kw-search', 'kw-tier', 'kw-intent', 'kw-sort'].forEach((id) => redraw(id, 'kwCount'));
+  ['site-filter'].forEach((id) => redraw(id, 'siteRows'));
+  ['rm-stage'].forEach((id) => redraw(id, 'roadRows'));
+  ['ex-search', 'ex-min'].forEach((id) => { redraw(id, 'exRows'); redraw(id, 'exCount'); });
+</script>
+
+<script>
+  // Shared helpers.
+  window.seo = {
+    td(tr, text, cls) { const td = document.createElement('td'); td.textContent = text == null || text === '' ? '—' : String(text); if (cls) td.className = cls; tr.appendChild(td); return td; },
+    pill(tr, text, cls) { const td = document.createElement('td'); const s = document.createElement('span'); s.className = 'seo-pill ' + (cls || ''); s.textContent = text || '—'; td.appendChild(s); tr.appendChild(td); return td; },
+    tierCls(t) { return { 'Tier 1': 't1', 'Tier 2': 't2', 'Tier 3': 't3', 'Tier 4': 't4', Excluded: 'ex' }[t] || ''; },
+    money(v) { return v == null || v === '' ? '—' : '$' + Number(v).toFixed(2); },
+    val(id) { const el = document.getElementById(id); return el ? el.value : ''; },
+    fail(el, d, cols) {
+      el.replaceChildren();
+      const tr = document.createElement('tr'); const td = document.createElement('td'); td.colSpan = cols;
+      td.textContent = d.status === 'error' ? 'This table failed to load.' : '—'; tr.appendChild(td); el.appendChild(tr);
+    },
+    unskel(el, d) { if (d.status !== 'loading') el.classList.remove('dash-skeleton'); },
+    priCls(p) { const s = String(p).toLowerCase(); return s.startsWith('high') ? 'high' : s.startsWith('cond') ? 'part' : ''; },
+    covCls(v) { const s = String(v); return s === 'Yes' ? 'yes' : s.startsWith('Partial') ? 'part' : 'no'; },
+    covText(v) { const s = String(v); return s === 'Yes' ? 'Yes' : s.startsWith('Partial') ? 'Blog only' : 'No'; },
+  };
+
+  // Headline numbers.
+  const one = (name, field) => dash.draw(name, (el) => {
+    const d = dash.data('overview'); seo.unskel(el, d);
+    el.textContent = d.status === 'ok' && d.data[0] ? d3.format(',')(d.data[0][field]) : '—';
+  });
+  one('ofcPage1', 'ofc_page1'); one('checked', 'checked'); one('tier1Lede', 'tier1'); one('issuesLede', 'site_issues');
+  one('kCurated', 'curated'); one('kTier1', 'tier1'); one('kPage1', 'ofc_page1'); one('kChecked', 'checked'); one('kIssues', 'site_issues'); one('kUrls', 'site_urls');
+
+  dash.draw('swAll', (el) => { el.style.background = dash.colors[0]; el.style.opacity = '0.35'; });
+  dash.draw('swT1', (el) => { el.style.background = dash.colors[0]; });
+
+  // Horizontal bar chart helper.
+  function hbars(el, rows, opts) {
+    el.replaceChildren();
+    if (!rows.length) { el.textContent = '—'; return; }
+    const W = el.clientWidth || 320, barH = 22, gap = 8;
+    const svg = d3.select(el).append('svg').attr('role', 'img').attr('aria-label', opts.label);
+    const probe = svg.append('g');
+    const labW = Math.min(W * 0.45, d3.max(rows, (r) => { const t = probe.append('text').text(r[opts.key]); const w = t.node().getComputedTextLength(); t.remove(); return w; }) + 10);
+    probe.remove();
+    const H = rows.length * (barH + gap);
+    svg.attr('viewBox', `0 0 ${W} ${H}`).attr('height', H);
+    const x = d3.scaleLinear().domain([0, d3.max(rows, (r) => r[opts.value]) || 1]).range([0, W - labW - 40]);
+    const g = svg.selectAll('g.row').data(rows).join('g').attr('class', 'row').attr('transform', (d, i) => `translate(0,${i * (barH + gap)})`);
+    g.append('text').attr('x', labW - 8).attr('y', barH / 2).attr('dy', '0.35em').attr('text-anchor', 'end').attr('class', 'lbl').text((d) => d[opts.key]);
+    g.append('rect').attr('x', labW).attr('height', barH).attr('rx', 3).attr('width', (d) => Math.max(1, x(d[opts.value]))).style('fill', dash.colors[0]).style('opacity', opts.overlay ? 0.35 : 1);
+    if (opts.overlay) g.append('rect').attr('x', labW).attr('height', barH).attr('rx', 3).attr('width', (d) => x(d[opts.overlay])).style('fill', dash.colors[0]);
+    g.append('text').attr('x', (d) => labW + x(d[opts.value]) + 6).attr('y', barH / 2).attr('dy', '0.35em').text((d) => opts.overlay ? `${d[opts.value]} (${d[opts.overlay]} Tier 1)` : d[opts.value]);
+  }
+  dash.draw('tierChart', (el) => {
+    const d = dash.data('tiers');
+    if (d.status !== 'ok') { el.textContent = d.status === 'error' ? 'This chart failed to load.' : '—'; return; }
+    hbars(el, d.data, { key: 'tier', value: 'count', label: 'Bar chart of keyword counts per priority tier' });
+  });
+  dash.draw('pageChart', (el) => {
+    const d = dash.data('bypage');
+    if (d.status !== 'ok') { el.textContent = d.status === 'error' ? 'This chart failed to load.' : '—'; return; }
+    hbars(el, d.data, { key: 'page', value: 'keywords', overlay: 'tier1', label: 'Bar chart of keywords mapped to each page, with the Tier 1 share' });
+  });
+
+  // Scatter: score against high bid.
+  const TIERS = ['Tier 1', 'Tier 2', 'Tier 3', 'Tier 4', 'Excluded'];
+  dash.draw('scatterLegend', (el) => {
+    el.replaceChildren(...TIERS.map((t, i) => { const s = document.createElement('span'); const sw = document.createElement('i'); sw.style.background = i < 4 ? dash.colors[i] : 'var(--cds-chart-muted)'; s.append(sw, t); return s; }));
+  });
+  dash.draw('scatter', (el) => {
+    const d = dash.data('keywords');
+    if (d.status !== 'ok') { el.textContent = d.status === 'error' ? 'This chart failed to load.' : '—'; return; }
+    el.replaceChildren();
+    const rows = d.data.filter((r) => r.bid_high != null);
+    const W = el.clientWidth || 600, H = 340, m = { t: 10, r: 16, b: 40, l: 40 };
+    const x = d3.scaleLinear().domain([0, d3.max(rows, (r) => r.bid_high) * 1.05]).nice().range([m.l, W - m.r]);
+    const y = d3.scaleLinear().domain([d3.min(rows, (r) => r.score) - 0.3, d3.max(rows, (r) => r.score) + 0.2]).nice().range([H - m.b, m.t]);
+    const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('height', H).attr('role', 'img').attr('aria-label', 'Scatter plot of keyword opportunity score against the high top-of-page bid');
+    svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(Math.max(3, Math.floor(W / 90))).tickFormat((v) => '$' + v)).call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
+    svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6)).call((g) => g.selectAll('line,path').style('stroke', 'var(--cds-chart-axis)'));
+    svg.append('g').selectAll('line').data(y.ticks(6)).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y).attr('y2', y).style('stroke', 'var(--cds-chart-grid)');
+    svg.append('text').attr('x', W - m.r).attr('y', H - 6).attr('text-anchor', 'end').text('Top-of-page bid, high range (USD)');
+    svg.append('text').attr('x', 4).attr('y', m.t + 2).attr('dy', '0.7em').text('Score');
+    const tip = document.createElement('div'); tip.className = 'seo-tip'; tip.hidden = true; el.appendChild(tip);
+    svg.append('g').selectAll('circle').data(rows).join('circle')
+      .attr('cx', (r) => x(r.bid_high)).attr('cy', (r) => y(r.score)).attr('r', (r) => r.kp_value >= 5000 ? 7 : r.kp_value >= 500 ? 5.5 : 4)
+      .style('fill', (r) => { const i = TIERS.indexOf(r.tier); return i >= 0 && i < 4 ? dash.colors[i] : 'var(--cds-chart-muted)'; }).style('opacity', 0.8).style('stroke', 'var(--color-bg)').style('stroke-width', 1)
+      .on('pointerenter pointermove', (ev, r) => {
+        tip.replaceChildren();
+        const b = document.createElement('b'); b.textContent = r.keyword;
+        const s1 = document.createElement('span'); s1.textContent = `${r.volume} searches/mo · ${r.tier} · score ${r.score}`;
+        const s2 = document.createElement('span'); s2.textContent = `Bids ${seo.money(r.bid_low)} – ${seo.money(r.bid_high)}`;
+        const s3 = document.createElement('span'); s3.textContent = r.page;
+        tip.append(b, s1, s2, s3); tip.hidden = false;
+        const [px, py] = d3.pointer(ev, el);
+        tip.style.left = Math.min(px + 12, el.clientWidth - 270) + 'px'; tip.style.top = Math.max(0, py - 70) + 'px';
+      })
+      .on('pointerleave', () => { tip.hidden = true; });
+  });
+
+  dash.draw('topRows', (el) => {
+    const d = dash.data('keywords'); if (d.status !== 'ok') return seo.fail(el, d, 6);
+    el.replaceChildren(...d.data.filter((r) => r.tier === 'Tier 1').sort((a, b) => b.score - a.score).slice(0, 10).map((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.keyword);
+      seo.td(tr, r.keyword, 'kw'); seo.td(tr, r.volume); seo.td(tr, seo.money(r.bid_high), 'num'); seo.td(tr, r.score, 'num'); seo.pill(tr, r.tier, seo.tierCls(r.tier)); seo.td(tr, r.page);
+      return tr;
+    }));
+  });
+</script>
+
+<script>
+  // Keywords tab.
+  function kwFiltered() {
+    const d = dash.data('keywords'); if (d.status !== 'ok') return null;
+    const q = seo.val('kw-search').trim().toLowerCase(), tier = seo.val('kw-tier'), page = seo.val('kw-page'), intent = seo.val('kw-intent'), sort = seo.val('kw-sort') || 'score';
+    const rows = d.data.filter((r) => (!q || r.keyword.includes(q) || String(r.page).toLowerCase().includes(q)) && (!tier || r.tier === tier) && (!page || r.page === page) && (!intent || r.intent === intent));
+    rows.sort((a, b) => sort === 'keyword' ? a.keyword.localeCompare(b.keyword) : ((b[sort] ?? -1) - (a[sort] ?? -1)));
+    return { rows, total: d.data.length };
+  }
+  window.kwFiltered = kwFiltered;
+  dash.draw('kwPageSelect', (sel) => {
+    const d = dash.data('keywords'); const cur = sel.value;
+    const pages = d.status === 'ok' ? [...new Set(d.data.map((r) => r.page))].sort() : [];
+    sel.replaceChildren(new Option('All pages', ''), ...pages.map((p) => new Option(p)));
+    sel.value = pages.includes(cur) ? cur : '';
+    sel.onchange = () => { dash.draw('kwRows'); dash.draw('kwCount'); };
+  });
+  dash.draw('kwCount', (el) => { const f = kwFiltered(); el.textContent = f ? `Showing ${f.rows.length} of ${f.total} keywords` : '—'; });
+  dash.draw('kwRows', (el) => {
+    const d = dash.data('keywords'); if (d.status !== 'ok') return seo.fail(el, d, 16);
+    const f = kwFiltered();
+    el.replaceChildren(...f.rows.map((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.keyword);
+      seo.td(tr, r.keyword, 'kw'); seo.td(tr, r.volume); seo.td(tr, r.change_3m); seo.td(tr, r.change_yoy); seo.td(tr, r.competition); seo.td(tr, r.comp_index, 'num');
+      seo.td(tr, seo.money(r.bid_low), 'num'); seo.td(tr, seo.money(r.bid_high), 'num'); seo.td(tr, r.intent); seo.td(tr, r.role); seo.td(tr, r.score, 'num');
+      seo.pill(tr, r.tier, seo.tierCls(r.tier)); seo.td(tr, r.page); seo.td(tr, r.ofc_rank); seo.td(tr, r.top_results, 'wrap'); seo.td(tr, r.notes, 'wrap');
+      return tr;
+    }));
+  });
+</script>
+
+<script>
+  // Page map tab.
+  dash.draw('pageRows', (el) => {
+    const d = dash.data('pages'); if (d.status !== 'ok') return seo.fail(el, d, 10);
+    el.replaceChildren(...d.data.map((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.page);
+      seo.td(tr, r.page, 'kw'); seo.td(tr, r.primary); seo.td(tr, r.volume); seo.td(tr, r.bid_range); seo.td(tr, r.competition); seo.pill(tr, r.priority, seo.priCls(r.priority));
+      seo.td(tr, r.secondary, 'wrap'); seo.td(tr, r.longtail, 'wrap'); seo.td(tr, r.audience, 'wrap'); seo.td(tr, r.gap, 'wrap');
+      return tr;
+    }));
+  });
+  dash.draw('opSelect', (sel) => {
+    const d = dash.data('onpage'); const cur = sel.value;
+    const pages = d.status === 'ok' ? d.data.map((r) => r.page) : [];
+    sel.replaceChildren(...pages.map((p) => new Option(p)));
+    sel.value = pages.includes(cur) ? cur : (pages[0] || '');
+    sel.onchange = () => ['opPrimary', 'opTitle', 'opMeta', 'opH1', 'opStructure', 'opSecondary', 'opFaq', 'opLinks', 'opSchema', 'opCta'].forEach((n) => dash.draw(n));
+  });
+  const opField = (name, field, extra) => dash.draw(name, (el) => {
+    const d = dash.data('onpage');
+    if (d.status !== 'ok') { el.textContent = '—'; return; }
+    const pick = seo.val('op-page') || (d.data[0] && d.data[0].page);
+    const r = d.data.find((x) => x.page === pick); if (!r) { el.textContent = '—'; return; }
+    el.dataset.source = 'onpage'; el.dataset.field = field; el.dataset.where = 'page=' + encodeURIComponent(r.page);
+    if (field === 'structure') {
+      const ul = document.createElement('ul'); ul.className = 'seo-list';
+      String(r.structure).split('|').map((s) => s.trim()).filter(Boolean).forEach((s) => { const li = document.createElement('li'); li.textContent = s; ul.appendChild(li); });
+      el.replaceChildren(ul); return;
+    }
+    el.textContent = (r[field] || '—') + (extra ? extra(r) : '');
+  });
+  opField('opPrimary', 'primary'); opField('opTitle', 'title', (r) => ` (${r.title_len} characters)`); opField('opMeta', 'meta', (r) => ` (${r.meta_len} characters)`); opField('opH1', 'h1');
+  opField('opStructure', 'structure'); opField('opSecondary', 'secondary_placement'); opField('opFaq', 'faq'); opField('opLinks', 'links'); opField('opSchema', 'schema'); opField('opCta', 'cta');
+  dash.draw('canRows', (el) => {
+    const d = dash.data('cannibal'); if (d.status !== 'ok') return seo.fail(el, d, 5);
+    el.replaceChildren(...d.data.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.conflict);
+      seo.td(tr, r.conflict, 'kw'); seo.td(tr, r.keywords, 'wrap'); seo.td(tr, r.decision); seo.td(tr, r.assignment, 'wrap'); seo.pill(tr, r.priority, seo.priCls(r.priority)); return tr; }));
+  });
+  dash.draw('linkRows', (el) => {
+    const d = dash.data('links'); if (d.status !== 'ok') return seo.fail(el, d, 4);
+    el.replaceChildren(...d.data.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = String(r.n);
+      seo.td(tr, r.source); seo.td(tr, r.destination); seo.td(tr, r.anchor); seo.td(tr, r.reason, 'wrap'); return tr; }));
+  });
+</script>
+
+<script>
+  // Competitors tab.
+  const COV = ['ecommerce', 'b2b', 'fba', 'warehousing', 'kitting', 'pickpack', 'returns', 'crossdock', 'storage', 'subscription', 'retail', 'pricing', 'locations', 'comparison'];
+  dash.draw('compRows', (el) => {
+    const d = dash.data('competitors'); if (d.status !== 'ok') return seo.fail(el, d, 15);
+    el.replaceChildren(...d.data.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.name);
+      seo.td(tr, r.name.replace(/ \(.*\)$/, ''), 'kw'); COV.forEach((c) => seo.pill(tr, seo.covText(r[c]), seo.covCls(r[c]))); return tr; }));
+  });
+  dash.draw('compSelect', (sel) => {
+    const d = dash.data('competitors'); const cur = sel.value;
+    const names = d.status === 'ok' ? d.data.map((r) => r.name) : [];
+    sel.replaceChildren(...names.map((n) => new Option(n.replace(/ \(.*\)$/, ''), n)));
+    sel.value = names.includes(cur) ? cur : (names[0] || '');
+    sel.onchange = () => ['cDomain', 'cPos', 'cPatterns', 'cNotFound', 'cInd', 'cClaims'].forEach((n) => dash.draw(n));
+  });
+  const cField = (name, field) => dash.draw(name, (el) => {
+    const d = dash.data('competitors'); if (d.status !== 'ok') { el.textContent = '—'; return; }
+    const pick = seo.val('comp-pick') || (d.data[0] && d.data[0].name);
+    const r = d.data.find((x) => x.name === pick); if (!r) { el.textContent = '—'; return; }
+    el.dataset.source = 'competitors'; el.dataset.field = field; el.dataset.where = 'name=' + encodeURIComponent(r.name);
+    el.textContent = r[field] || '—';
+  });
+  cField('cDomain', 'domain'); cField('cPos', 'positioning'); cField('cPatterns', 'patterns'); cField('cNotFound', 'not_found'); cField('cInd', 'industries'); cField('cClaims', 'claims');
+  const GAPC = ['onefulfillcenter', 'flowspace', 'stord', 'shipbob', 'shipmonk', 'dcl', 'ryder', 'saddle_creek', 'red_stag', 'amz_prep', 'prep_prime'];
+  dash.draw('gapRows', (el) => {
+    const d = dash.data('gap'); if (d.status !== 'ok') return seo.fail(el, d, 14);
+    el.replaceChildren(...d.data.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.keyword);
+      seo.td(tr, r.keyword, 'kw'); seo.td(tr, r.volume);
+      GAPC.forEach((c) => { const v = String(r[c]); const m = v.match(/^#\d+/); if (m) seo.pill(tr, m[0], 'yes'); else seo.td(tr, '—'); });
+      seo.td(tr, r.top1); return tr; }));
+  });
+  dash.draw('gapNoteRows', (el) => {
+    const d = dash.data('gapnotes'); if (d.status !== 'ok') return seo.fail(el, d, 5);
+    el.replaceChildren(...d.data.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = String(r.n);
+      seo.td(tr, r.keywords, 'kw'); seo.td(tr, r.why); seo.td(tr, r.winning, 'wrap'); seo.td(tr, r.action, 'wrap'); seo.td(tr, r.difficulty); return tr; }));
+  });
+</script>
+
+<script>
+  // Google results tab.
+  dash.draw('serpSelect', (sel) => {
+    const d = dash.data('serp'); const cur = sel.value;
+    const kws = d.status === 'ok' ? [...new Set(d.data.map((r) => r.keyword))] : [];
+    sel.replaceChildren(...kws.map((k) => new Option(k)));
+    sel.value = kws.includes(cur) ? cur : (kws[0] || '');
+    sel.onchange = () => ['serpRows', 'serpRewards', 'serpPaa'].forEach((n) => dash.draw(n));
+  });
+  const serpPick = (d) => seo.val('serp-kw') || (d.data[0] && d.data[0].keyword);
+  dash.draw('serpRows', (el) => {
+    const d = dash.data('serp'); if (d.status !== 'ok') return seo.fail(el, d, 4);
+    const k = serpPick(d);
+    el.replaceChildren(...d.data.filter((r) => r.keyword === k).map((r) => { const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.keyword) + ',' + r.position;
+      seo.td(tr, r.position, 'num'); seo.td(tr, r.domain, 'kw'); seo.td(tr, r.url, 'wrap'); seo.td(tr, r.page_type); return tr; }));
+  });
+  dash.draw('serpRewards', (el) => {
+    const d = dash.data('serp'); if (d.status !== 'ok') { el.textContent = '—'; return; }
+    const k = serpPick(d); const r = d.data.find((x) => x.keyword === k && x.position === 1);
+    el.dataset.where = 'keyword=' + encodeURIComponent(k) + '&position=1';
+    el.textContent = r && r.rewards ? 'What Google rewards here: ' + r.rewards : '—';
+  });
+  dash.draw('serpPaa', (el) => {
+    const d = dash.data('serp'); if (d.status !== 'ok') { el.textContent = '—'; return; }
+    const k = serpPick(d); const r = d.data.find((x) => x.keyword === k && x.position === 1);
+    const qs = r && r.paa ? String(r.paa).split(';').map((s) => s.trim()).filter(Boolean) : [];
+    el.replaceChildren();
+    const h = document.createElement('h3'); h.textContent = qs.length ? 'People also ask' : 'No "People also ask" questions captured for this keyword';
+    el.appendChild(h);
+    if (qs.length) { const ul = document.createElement('ul'); ul.className = 'seo-list'; qs.forEach((q) => { const li = document.createElement('li'); li.textContent = q; ul.appendChild(li); }); el.appendChild(ul); }
+  });
+</script>
+
+<script>
+  // Site audit and plan tabs.
+  dash.draw('siteTypeSelect', (sel) => {
+    const d = dash.data('site'); const cur = sel.value;
+    const types = d.status === 'ok' ? [...new Set(d.data.map((r) => r.type))].sort() : [];
+    sel.replaceChildren(new Option('All types', ''), ...types.map((t) => new Option(t)));
+    sel.value = types.includes(cur) ? cur : '';
+    sel.onchange = () => dash.draw('siteRows');
+  });
+  dash.draw('siteRows', (el) => {
+    const d = dash.data('site'); if (d.status !== 'ok') return seo.fail(el, d, 9);
+    const f = seo.val('site-filter'), t = seo.val('site-type');
+    el.replaceChildren(...d.data.filter((r) => (!f || r.flag === f) && (!t || r.type === t)).map((r) => { const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.url);
+      seo.td(tr, r.path, 'kw'); seo.td(tr, r.type); seo.td(tr, r.status); seo.pill(tr, r.flag, r.flag === 'Issue' ? 'warn' : 'yes');
+      seo.td(tr, r.title, 'wrap'); seo.td(tr, r.h1, 'wrap'); seo.td(tr, r.words, 'num'); seo.td(tr, r.primary); seo.td(tr, r.issue, 'wrap'); return tr; }));
+  });
+  dash.draw('roadRows', (el) => {
+    const d = dash.data('roadmap'); if (d.status !== 'ok') return seo.fail(el, d, 5);
+    const s = seo.val('rm-stage');
+    el.replaceChildren(...d.data.filter((r) => !s || r.stage === s).map((r) => { const tr = document.createElement('tr'); tr.dataset.key = String(r.step);
+      seo.td(tr, r.stage, 'kw'); seo.td(tr, r.workstream); seo.td(tr, r.action, 'wrap'); seo.td(tr, r.owner); seo.td(tr, r.kpi, 'wrap'); return tr; }));
+  });
+  dash.draw('newRows', (el) => {
+    const d = dash.data('newpages'); if (d.status !== 'ok') return seo.fail(el, d, 8);
+    el.replaceChildren(...d.data.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.url);
+      seo.td(tr, r.url, 'kw'); seo.td(tr, r.primary); seo.td(tr, r.volume); seo.td(tr, r.bid_range); seo.pill(tr, r.priority, seo.priCls(r.priority));
+      seo.td(tr, r.evidence, 'wrap'); seo.td(tr, r.structure, 'wrap'); seo.td(tr, r.competitors, 'wrap'); return tr; }));
+  });
+  dash.draw('blogRows', (el) => {
+    const d = dash.data('blog'); if (d.status !== 'ok') return seo.fail(el, d, 7);
+    el.replaceChildren(...d.data.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.keyword);
+      seo.td(tr, r.keyword, 'kw'); seo.td(tr, r.volume); seo.td(tr, r.title, 'wrap'); seo.td(tr, r.url); seo.td(tr, r.service_page); seo.pill(tr, r.priority, seo.priCls(r.priority)); seo.td(tr, r.notes, 'wrap'); return tr; }));
+  });
+</script>
+
+<script>
+  // Keyword Planner explorer.
+  dash.draw('exThemeSelect', (sel) => {
+    const d = dash.data('kp_raw'); const cur = sel.value;
+    const th = d.status === 'ok' ? [...new Set(d.data.map((r) => r.theme))].filter(Boolean).sort() : [];
+    sel.replaceChildren(new Option('All themes', ''), ...th.map((t) => new Option(t)));
+    sel.value = th.includes(cur) ? cur : '';
+    sel.onchange = () => { dash.draw('exRows'); dash.draw('exCount'); };
+  });
+  function exFiltered() {
+    const d = dash.data('kp_raw'); if (d.status !== 'ok') return null;
+    const q = seo.val('ex-search').trim().toLowerCase(), th = seo.val('ex-theme'), min = Number(seo.val('ex-min') || 0);
+    const rows = d.data.filter((r) => (!q || r.keyword.includes(q)) && (!th || r.theme === th) && (Number(r.kp_value) || 0) >= min);
+    return { rows, total: d.data.length };
+  }
+  dash.draw('exCount', (el) => { const f = exFiltered(); el.textContent = f ? `${d3.format(',')(f.rows.length)} of ${d3.format(',')(f.total)} ideas match${f.rows.length > 300 ? ' · showing the 300 with the most searches' : ''}` : '—'; });
+  dash.draw('exRows', (el) => {
+    const d = dash.data('kp_raw'); if (d.status !== 'ok') return seo.fail(el, d, 10);
+    const f = exFiltered();
+    el.replaceChildren(...f.rows.slice(0, 300).map((r) => { const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.keyword);
+      seo.td(tr, r.keyword, 'kw'); seo.td(tr, r.volume); seo.td(tr, r.change_3m); seo.td(tr, r.change_yoy); seo.td(tr, r.competition);
+      seo.td(tr, seo.money(r.bid_low), 'num'); seo.td(tr, seo.money(r.bid_high), 'num'); seo.td(tr, r.theme); seo.td(tr, r.intent); seo.td(tr, r.seed_groups); return tr; }));
+  });
+</script>

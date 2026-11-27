@@ -1,0 +1,1182 @@
+[
+  {
+    "name": "Flowspace",
+    "domain": "flow.space",
+    "positioning": "Software-led omnichannel fulfillment platform ('Fulfillment that grows with your brand') combining a US & Canada warehouse network with OMS/WMS/AI software for DTC, B2B retail/wholesale and Amazon; strong food & beverage/CPG angle (FDA/GFSI facilities, Pod3PL grocery distribution).",
+    "claims": [
+      {
+        "text": "With warehouses and fulfillment centers across the US and Canada, Flowspace keeps inventory close to demand, helping brands ship faster and reduce costs.",
+        "url": "https://flow.space/locations"
+      },
+      {
+        "text": "99% on-time delivery",
+        "url": "https://flow.space/locations"
+      },
+      {
+        "text": "Flowspace achieves +94 NPS, 107 points above the 3PL industry average.",
+        "url": "https://flow.space/about-us"
+      },
+      {
+        "text": "Up to $50k to break free from a bad 3PL. (Fulfillment Freedom Fund)",
+        "url": "https://flow.space/about-us"
+      },
+      {
+        "text": "Services listed: Temperature-controlled storage; Container unloading & cross-docking; FDA & GFSI certified facilities; Kitting & bundling; Subscription support; Returns management",
+        "url": "https://flow.space/locations"
+      },
+      {
+        "text": "No explicit warehouse count found in served HTML of homepage, /locations, /fulfillment or /about-us",
+        "url": "https://flow.space/locations"
+      }
+    ],
+    "pages": [
+      {
+        "theme": "homepage",
+        "url": "https://flow.space/",
+        "title": "Flowspace Fulfillment Platform | Warehousing & Logistics for Ecommerce",
+        "meta": "Scale your ecommerce operations with Flowspace. Manage inventory, orders, and nationwide fulfillment with powerful logistics software and warehouse network.",
+        "h1": "Fulfillment that grows with your brand"
+      },
+      {
+        "theme": "ecommerce fulfillment",
+        "url": "https://flow.space/fulfillment/e-commerce",
+        "title": "Ecommerce Fulfillment & 3PL Services | Flowspace",
+        "meta": "Flowspace provides ecommerce fulfillment services including pick, pack, ship, rate shopping, and order management for brands scaling across DTC, marketplace, and retail.",
+        "h1": "Ecommerce fulfillment made simpler"
+      },
+      {
+        "theme": "ecommerce fulfillment (landing page)",
+        "url": "https://flow.space/ecommerce-fulfillment-solutions",
+        "title": "Ecommerce Fulfillment Built for Growing Brands | Flowspace",
+        "meta": "Scale your ecommerce brand without scaling your headcount. Flowspace handles ecommerce fulfillment services—pick and pack, shipping, and real-time order visibility.",
+        "h1": "Ecommerce fulfillment for growing brands"
+      },
+      {
+        "theme": "order fulfillment hub",
+        "url": "https://flow.space/fulfillment",
+        "title": "Order Fulfillment Services & Solutions | Flowspace",
+        "meta": "Simplify order fulfillment with Flowspace. Manage DTC and B2B orders with nationwide warehousing, real-time inventory visibility, and smarter shipping.",
+        "h1": "Order fulfillment services built to scale"
+      },
+      {
+        "theme": "B2B/wholesale + retail/EDI fulfillment",
+        "url": "https://flow.space/fulfillment/retail",
+        "title": "B2B Retail Fulfillment Services & EDI | Flowspace",
+        "meta": "B2B fulfillment services for retail and wholesale brands. Simplify EDI, meet retailer compliance requirements, reduce chargebacks, and streamline shipping.",
+        "h1": "B2B fulfillment for retail and wholesale"
+      },
+      {
+        "theme": "retail/EDI integration",
+        "url": "https://flow.space/integration/edi",
+        "title": "EDI Integration for Retail Fulfillment | Flowspace",
+        "meta": "Flowspace manages EDI integrations and retail compliance so brands can automate orders, reduce manual work, and scale retail fulfillment.",
+        "h1": "EDI for retail"
+      },
+      {
+        "theme": "Amazon FBA prep",
+        "url": "https://flow.space/amazon-fulfillment-services",
+        "title": "Amazon Fulfillment Services & FBA Prep | Flowspace",
+        "meta": "Fast, accurate Amazon fulfillment services — FBA prep, real-time inventory, and a 3PL built for Amazon sellers. Get a free quote today.",
+        "h1": "Upgrade your Amazon fulfillment"
+      },
+      {
+        "theme": "3PL / warehousing",
+        "url": "https://flow.space/3pl-solution",
+        "title": "3PL Fulfillment Services & Solutions | Flowspace",
+        "meta": "Move beyond the limits of traditional 3PL providers. Scale with Flowspace's 3PL fulfillment services, nationwide warehousing, and omnichannel support.",
+        "h1": "3PL fulfillment services built for modern brands"
+      },
+      {
+        "theme": "locations/warehouse network",
+        "url": "https://flow.space/locations",
+        "title": "Warehouse & Distribution Centers in USA & Canada | Flowspace",
+        "meta": "Explore Flowspace warehouses and distribution centers across the US and Canada. Stay closer to customers with faster ecommerce fulfillment.",
+        "h1": "Warehouse locations across the US & Canada"
+      },
+      {
+        "theme": "locations - country",
+        "url": "https://flow.space/locations/us",
+        "title": "USA Warehouse Locations & Fulfillment Network | Flowspace",
+        "meta": "Flowspace helps brands store inventory across US warehouses to improve delivery speed and optimize fulfillment performance.",
+        "h1": "Fulfillment centers in the United States"
+      },
+      {
+        "theme": "locations - state template (48 /state/ pages)",
+        "url": "https://flow.space/state/ak",
+        "title": "Alaska Fulfillment Services | Ecommerce 3PL Support",
+        "meta": "Brands shipping to Alaska can support regional ecommerce demand through strategically positioned fulfillment operations serving West Coast distribution.",
+        "h1": "Looking for a 3PL for fulfillment services in Alaska?"
+      },
+      {
+        "theme": "locations - city template (579 /locations-cities/ pages)",
+        "url": "https://flow.space/locations-cities/acworth",
+        "title": "Ship From Acworth | Flowspace",
+        "meta": "Place Georgia ecommerce inventory in Acworth with on-demand 3PL warehousing, pick-and-pack, and shipping options built for fast, accurate delivery.",
+        "h1": "Looking for a 3PL for fulfillment services in Acworth?"
+      },
+      {
+        "theme": "grocery/CPG distribution",
+        "url": "https://flow.space/fulfillment/pod3pl",
+        "title": "Grocery Ecommerce Fulfillment & Distribution | Flowspace.",
+        "meta": "Pod3PL combines grocery distribution and ecommerce fulfillment in shared facilities, helping CPG brands serve retail and DTC with fewer inventory transfers.",
+        "h1": "Grocery ecommerce fulfillment & distribution: Pod3PL"
+      },
+      {
+        "theme": "integrations hub",
+        "url": "https://flow.space/integration",
+        "title": "Flowspace Integrations | Connect Ecommerce, ERP & Shipping Tools",
+        "meta": "Connect storefronts, marketplaces, ERPs, and carriers with Flowspace integrations. Keep fulfillment running smoothly across every channel you sell on.",
+        "h1": "Every integration your brand will need, all in one place"
+      },
+      {
+        "theme": "comparison/vs (blog)",
+        "url": "https://flow.space/blog/flowspace-vs-shipbob",
+        "title": "Flowspace vs Shipbob: Choosing The Right Fulfillment Partner",
+        "meta": "Compare Flowspace vs Shipbob and find the best fulfillment partner for your needs—whether you prioritize flexibility, scalability, or advanced technology.",
+        "h1": "Flowspace vs. ShipBob: Which fulfillment partner is right for you?"
+      },
+      {
+        "theme": "comparison/vs (blog)",
+        "url": "https://flow.space/blog/shipbob-vs-shipmonk-vs-stord-vs-red-stag",
+        "title": "ShipBob vs. ShipMonk vs. Stord vs. Red Stag | Flowspace",
+        "meta": "N/A (not fetched)",
+        "h1": "ShipBob vs. ShipMonk vs. Stord vs. Red Stag: Which 3PL is right for your brand?"
+      },
+      {
+        "theme": "alternatives (blog)",
+        "url": "https://flow.space/blog/fulfillment-alternatives",
+        "title": "The Best Amazon FBA Alternatives for 2022 | Flowspace",
+        "meta": "N/A (not fetched)",
+        "h1": "Amazon FBA alternatives"
+      },
+      {
+        "theme": "competitors blog category",
+        "url": "https://flow.space/blog-categories/competitors",
+        "title": "Competitors Insights, Trends & Articles| Flowspace",
+        "meta": "Explore Competitors articles on the Flowspace blog. Get insights on fulfillment, logistics, and ecommerce strategies to scale your brand.",
+        "h1": "Opinions, insights and company updates"
+      },
+      {
+        "theme": "kitting (blog only)",
+        "url": "https://flow.space/blog/kitting",
+        "title": "What Exactly is Kitting?",
+        "meta": "N/A (not fetched)",
+        "h1": "What exactly is kitting?"
+      },
+      {
+        "theme": "subscription box (blog only)",
+        "url": "https://flow.space/blog/subscription-box-fulfillment",
+        "title": "Subscription Box Fulfillment for Fast-Growing Brands",
+        "meta": "N/A (not fetched)",
+        "h1": "Subscription box fulfillment: What it is, why it’s hard, and how to do it better"
+      },
+      {
+        "theme": "cross-docking (blog only)",
+        "url": "https://flow.space/blog/what-is-cross-docking",
+        "title": "What is Cross-Docking?",
+        "meta": "Cross-docking is a process of the supply chain, whereby freight shipped by a supplier is distributed onto outbound trucks with minimal storage.",
+        "h1": "What is cross-docking?"
+      },
+      {
+        "theme": "pick & pack (blog only)",
+        "url": "https://flow.space/blog/what-is-pick-pack-and-ship",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "returns (blog only)",
+        "url": "https://flow.space/blog/return-process",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "B2B (blog)",
+        "url": "https://flow.space/blog/b2b-fulfillment",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "FBA prep (blog)",
+        "url": "https://flow.space/blog/fba-prep-with-flowspace",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "blog hub",
+        "url": "https://flow.space/blog",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "resources hub",
+        "url": "https://flow.space/resources",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "pricing",
+        "url": "https://flow.space/pricing",
+        "title": "N/A - 301 redirects to https://flow.space/schedule-a-demo (no public pricing page)",
+        "meta": "N/A",
+        "h1": "N/A"
+      },
+      {
+        "theme": "industries hub/pages",
+        "url": "https://flow.space/industries-served/food-beverage",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      }
+    ],
+    "industries": [
+      "Health & wellness",
+      "Food & beverage",
+      "Sports and outdoors",
+      "Furniture and home goods",
+      "Beauty and hygiene",
+      "Pet products"
+    ],
+    "content_patterns": [
+      "Programmatic local SEO: 579 /locations-cities/{city} pages + 48 /state/{xx} pages in sitemap, templated H1 'Looking for a 3PL for fulfillment services in {place}?'",
+      "Blog of ~333 posts with a dedicated 'competitors' category; head-to-head posts (flowspace-vs-shipbob, shipbob-vs-shipmonk-vs-stord-vs-red-stag, fba-vs-fbm, 3pl-vs-4pl)",
+      "Many service themes (kitting, subscription box, cross-docking, pick & pack, returns) covered only by blog posts, not dedicated service pages",
+      "Switching/rate-hike campaign landing pages: /switch-to-better-fulfillment, /stop-rate-hikes, /rising-costs, /fulfillment-freedom-fund ('Up to $50k')",
+      "Software-product pages under /platform/ (OMS, WMS, network optimization, FlowspaceAI, RetailOps, inventory management)",
+      "Resources: podcast ('Well Delivered') episodes, RFP template, KPI playbook, webinars; case studies; product-release notes",
+      "Seasonal pages: /peak-season-fulfillment/holiday and /back-to-school",
+      "Supply-side page /list-your-warehouse (marketplace heritage)",
+      "No public pricing page"
+    ],
+    "services_not_found": [
+      "No dedicated service page found for: kitting, pick & pack, returns/reverse logistics, cross-docking, inventory storage, subscription fulfillment (these appear only as feature bullets on /locations and /fulfillment/e-commerce plus blog posts)"
+    ],
+    "access_issues": [
+      "/pricing 301-redirects to /schedule-a-demo",
+      "Meta descriptions for some blog posts not recorded; several blog URLs listed from sitemap only (title/meta/h1 'N/A (not fetched)')",
+      "Warehouse count not stated in served HTML of key pages checked"
+    ],
+    "research_date": "2026-11-27"
+  },
+  {
+    "name": "Stord",
+    "domain": "stord.com",
+    "positioning": "Positions as a 'commerce enablement' / cloud supply chain company: omnichannel (DTC + B2B) fulfillment, warehousing, freight/parcel and integrated software (OMS, WMS, returns, subscriptions, consumer experience) — explicitly 'not your standard 3PL' and premium ('Why We're Not the Cheapest').",
+    "claims": [
+      {
+        "text": "~$10B GMV, commerce powered by Stord",
+        "url": "https://www.stord.com/"
+      },
+      {
+        "text": "99.5% 1-2 Day ground coverage",
+        "url": "https://www.stord.com/"
+      },
+      {
+        "text": "20+ Omnichannel nodes",
+        "url": "https://www.stord.com/"
+      },
+      {
+        "text": "50M+ Consumer packages annually",
+        "url": "https://www.stord.com/"
+      },
+      {
+        "text": "Network of first-party facilities strategically-placed across the US and Canada to provide complete 2-day ground coverage for customers",
+        "url": "https://stord.com/locations"
+      },
+      {
+        "text": "635M total B2b unit volume (square-feet and DTC order counters render as '0.1M'/'0M' in static HTML - JS counters, values not verifiable)",
+        "url": "https://stord.com/locations"
+      },
+      {
+        "text": "We power over $10 billion in commerce every year, and are ready to scale yours.",
+        "url": "https://stord.com/pricing"
+      },
+      {
+        "text": "99.99% order and inventory accuracy (WMS claim)",
+        "url": "https://www.stord.com/"
+      },
+      {
+        "text": "/fulfillment lists: Dedicated Warehousing, Kitting, Cross Docking, Retail Distribution, Cold Storage and Fulfillment",
+        "url": "https://stord.com/fulfillment"
+      }
+    ],
+    "pages": [
+      {
+        "theme": "homepage",
+        "url": "https://www.stord.com/",
+        "title": "Stord | Powering Commerce for the World’s Best Brands",
+        "meta": "Stord offers fulfillment, warehousing, and transportation for DTC and B2B, plus the integrated software you need to provide your end consumers with the best pre-purchase and post-delivery consumer experience. No matter your product, Stord is ready to power your commerce.",
+        "h1": "Omnichannel fulfillment and integrated software, built together to sell more, save money, and eliminate headaches."
+      },
+      {
+        "theme": "ecommerce + B2B fulfillment / warehousing / kitting / cross-docking (single hub page)",
+        "url": "https://stord.com/fulfillment",
+        "title": "Order Fulfillment Services - B2B, B2C, Ecommerce | Stord",
+        "meta": "Omnichannel warehousing and fulfillment designed to unlock your competitive advantage. Flexible, fast, and fully connected.",
+        "h1": "N/A (no <h1> in served HTML)"
+      },
+      {
+        "theme": "B2B/wholesale industry page",
+        "url": "https://stord.com/industries/b2b",
+        "title": "N/A (no <title> in served HTML; page appears client-rendered)",
+        "meta": "N/A",
+        "h1": "N/A"
+      },
+      {
+        "theme": "DTC industry page",
+        "url": "https://stord.com/industries/dtc",
+        "title": "N/A (no <title> in served HTML; page appears client-rendered)",
+        "meta": "N/A",
+        "h1": "N/A"
+      },
+      {
+        "theme": "retail delivery consolidation",
+        "url": "https://stord.com/transportation/retail-delivery-consolidation",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "returns/reverse logistics",
+        "url": "https://stord.com/returns",
+        "title": "Easy Returns for Consumers and Brands | Stord Returns",
+        "meta": "Take advantage of Stord’s industry-leading parcel rates and integrated technology for a seamless returns solution. Now all your orders, inventory, and returns can be seen on one dashboard, paired with a branded custom portal for easy processing.",
+        "h1": "Returns Refined"
+      },
+      {
+        "theme": "subscription fulfillment",
+        "url": "https://stord.com/subscriptions",
+        "title": "Subscription Software & Fulfillment | Stord",
+        "meta": "Stord Subscriptions connects billing, subscriber experience, and the operation behind every order, helping you prevent the failures that quietly turn good subscribers into churn.",
+        "h1": "Keep the subscribers you’re quietly losing."
+      },
+      {
+        "theme": "pricing",
+        "url": "https://stord.com/pricing",
+        "title": "Stord Pricing: Why We're Not the Cheapest | Stord",
+        "meta": "Curious to learn more about Stord",
+        "h1": "Pricing *"
+      },
+      {
+        "theme": "locations/warehouse network",
+        "url": "https://stord.com/locations",
+        "title": "Stord | Locations",
+        "meta": "Network of first-party facilities strategically-placed across the US and Canada to provide complete 2-day ground coverage for customers",
+        "h1": "Network of first-party facilities strategically-placed across the US and Canada to provide complete 2-day ground coverage for customers"
+      },
+      {
+        "theme": "integrations hub",
+        "url": "https://stord.com/integrations",
+        "title": "Stord | Integrations",
+        "meta": "Stord integrates easily with all of your disparate systems, from ERPs and warehouse management systems to marketplaces, and retail partners.",
+        "h1": "Integrations"
+      },
+      {
+        "theme": "freight/LTL",
+        "url": "https://stord.com/freight",
+        "title": "Reliable LTL Freight & Drayage Services | Stord Transportation",
+        "meta": "Experience reliable and efficient LTL freight and Drayage services with Stord. Our platform offers comprehensive visibility and real-time tracking updates of your shipments and orders. Benefit from unmatched operational efficiency while enjoying cost-effective less-than-truckload solutions. Connect with us to discover customized services tailored to your needs and request your quote today!",
+        "h1": "LTL You Can Count On"
+      },
+      {
+        "theme": "WMS software",
+        "url": "https://stord.com/warehouse-management-system",
+        "title": "N/A (no <title> in served HTML)",
+        "meta": "N/A",
+        "h1": "N/A"
+      },
+      {
+        "theme": "industry - beauty",
+        "url": "https://stord.com/beauty",
+        "title": "E-commerce Fulfillment & Consumer Experiences for Leading Beauty Brands / Stord",
+        "meta": "Refine your beauty brand",
+        "h1": "Fulfillment for Beauty Brands"
+      },
+      {
+        "theme": "industry - CPG",
+        "url": "https://stord.com/cpg",
+        "title": "E-commerce Fulfillment & Consumer Experiences for Leading CPG Brands / Stord",
+        "meta": "Deliver everyday essentials with extraordinary efficiency. Learn how to scale operations, improve agility, and keep shelves and consumers fully stocked with Stord.",
+        "h1": "Fulfillment for CPG Brands"
+      },
+      {
+        "theme": "industry - food & beverage",
+        "url": "https://stord.com/food-and-beverage",
+        "title": "E-commerce Fulfillment & Consumer Experiences for Leading Food & Beverage Brands / Stord",
+        "meta": "Serve up smarter fulfillment for your food & beverage brand. Learn how to streamline logistics, preserve freshness, and keep customers craving more with Stord.",
+        "h1": "Fulfillment for Food & Beverage"
+      },
+      {
+        "theme": "comparison (vs 3PL lead-gen LP)",
+        "url": "https://stord.com/getstord/stord_vs_3PL",
+        "title": "Stord vs 3PL",
+        "meta": "Stord is not your standard 3PL. Learn how our unique approach will help you scale your business and make your supply chain a competitive advantage.",
+        "h1": "N/A (no <h1> in served HTML)"
+      },
+      {
+        "theme": "blog hub",
+        "url": "https://stord.com/blog",
+        "title": "Stord",
+        "meta": "Stord Description",
+        "h1": "Stories & Solutions"
+      },
+      {
+        "theme": "resources hub",
+        "url": "https://stord.com/resources",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      }
+    ],
+    "industries": [
+      "DTC",
+      "B2B",
+      "Beauty",
+      "CPG",
+      "Food & beverage",
+      "Health",
+      "Supplements",
+      "Pet supplies",
+      "Apparel & accessories",
+      "(category pages also: /categories/health-and-beauty, /categories/apparel-and-accessories, /categories/nutrition-and-supplements)"
+    ],
+    "content_patterns": [
+      "Software-product pages (OMS + sub-pages, WMS, inventory planning, parcel, shipment protection, consumer-experience/estimated delivery date, AI)",
+      "Original-research/report hub: /reports (BFCM tracker, peak performance reports, state-of-AI 2026, de minimis guide) and a ~100-page 'mystery-shopping' series auditing brands' delivery experience",
+      "~91 gated /getstord/ lead-gen landing pages (RFP templates, '3PL checklist', 'Cloud supply chain for dummies', industry LPs)",
+      "Newsroom (~100 items), podcast (~24), keynote pages",
+      "Pricing page framed as value, not price list ('Why We're Not the Cheapest')",
+      "No programmatic city/location pages; single /locations page (a /city page exists but is a generic LP)",
+      "Many industry/WMS pages ship without <title>/<h1> in server HTML (client-rendered) - an SEO weakness"
+    ],
+    "services_not_found": [
+      "Amazon FBA prep (no page found; /amazon returns 404; not mentioned on /fulfillment)",
+      "Dedicated kitting page (/kitting 404; kitting only a bullet on /fulfillment)",
+      "Dedicated cross-docking page (/cross-docking 404; only a bullet on /fulfillment)",
+      "Dedicated pick & pack page",
+      "Dedicated inventory storage page"
+    ],
+    "access_issues": [
+      "/industries/b2b, /industries/dtc and /warehouse-management-system return 200 but no <title>, meta or <h1> in served HTML (client-rendered shell)",
+      "/fulfillment and /getstord/stord_vs_3PL have no <h1> in served HTML",
+      "Locations page stat counters render as 0M/0.1M placeholders in static HTML",
+      "stord.com/sitemap.xml lists only ~600 URLs (blog limited to ~100) - may not be complete"
+    ],
+    "research_date": "2026-11-27"
+  },
+  {
+    "name": "ShipBob",
+    "domain": "shipbob.com",
+    "positioning": "Tech-enabled global ecommerce fulfillment network for DTC brands (and increasingly B2B/retail and Amazon), selling fulfillment + its own WMS/software; heavy content-marketing and programmatic SEO footprint.",
+    "claims": [
+      {
+        "text": "Get best-in-class picking, packing, shipping, returns, and more across 50+ fulfillment centers.",
+        "url": "https://www.shipbob.com/"
+      },
+      {
+        "text": "Connect to 50+ few-click integrations from our App Store, or build directly with our developer-friendly API",
+        "url": "https://www.shipbob.com/"
+      },
+      {
+        "text": "Leverage turnkey integrations to connect to 150+ retailers through your preferred EDI or ERP provider.",
+        "url": "https://www.shipbob.com/product/retail-distribution/"
+      },
+      {
+        "text": "ShipBob is a leading fulfillment provider that has warehouses around the world, including the US, Canada, the UK, Europe, and Australia. (meta description)",
+        "url": "https://www.shipbob.com/shipbob-locations/"
+      },
+      {
+        "text": "#1 order fulfillment company for growing DTC brands (meta description)",
+        "url": "https://www.shipbob.com/ecommerce-fulfillment/"
+      }
+    ],
+    "pages": [
+      {
+        "theme": "homepage",
+        "url": "https://www.shipbob.com/",
+        "title": "Global Ecommerce Fulfillment Solution | ShipBob",
+        "meta": "Ecommerce fulfillment across all channels. ShipBob empowers businesses to scale, offer 2-day shipping, and manage inventory and shipments.",
+        "h1": "Disruption -proof Chaos -proof your fulfillment with ShipBob (rotating text; multiple H1s on page)"
+      },
+      {
+        "theme": "ecommerce fulfillment",
+        "url": "https://www.shipbob.com/ecommerce-fulfillment/",
+        "title": "Ecommerce Fulfillment 101: Definition + How the Fulfillment Process Works",
+        "meta": "Learn about ecommerce fulfillment services from ShipBob, the #1 order fulfillment company for growing DTC brands.",
+        "h1": "Complete Guide to Ecommerce Fulfillment: Definition, Processes, & Examples"
+      },
+      {
+        "theme": "B2B/wholesale (blog guide; /b2b-fulfillment/ 301s here)",
+        "url": "https://www.shipbob.com/blog/b2b-fulfillment/",
+        "title": "B2B Fulfillment & Shipping: What It Is & How It Works | ShipBob",
+        "meta": "Learn the core differences between B2B and B2C fulfillment, and how to find the right B2B fulfillment provider for your business.",
+        "h1": "B2B Fulfillment vs. B2C Fulfillment: What to Look for in a B2B Solution"
+      },
+      {
+        "theme": "retail/EDI fulfillment",
+        "url": "https://www.shipbob.com/edi-fulfillment/",
+        "title": "EDI Fulfillment: EDI Order Processing & Ecommerce Integrations",
+        "meta": "Learn how EDI fulfillment optimizes your ecommerce supply chain, streamlines data and insights, and improves order accuracy.",
+        "h1": "EDI Fulfillment & Order Processing with a 3PL"
+      },
+      {
+        "theme": "retail distribution",
+        "url": "https://www.shipbob.com/product/retail-distribution/",
+        "title": "Retail Distribution: EDI Solutions from ShipBob",
+        "meta": "Learn how ShipBob can fulfill EDI-compliant B2B orders for a variety of brick-and-mortar retailers as part of our fulfillment services.",
+        "h1": "Retail Distribution Made Easy"
+      },
+      {
+        "theme": "Amazon fulfillment",
+        "url": "https://www.shipbob.com/amazon-fulfillment/",
+        "title": "Best Amazon Fulfillment Services for Sellers | ShipBob",
+        "meta": "Amazon fulfillment is the process of picking, packing, and shipping Amazon orders. If you’re selling on Amazon, ShipBob is a 3PL of choice.",
+        "h1": "Amazon Fulfillment"
+      },
+      {
+        "theme": "Amazon product suite",
+        "url": "https://www.shipbob.com/product/amazon/",
+        "title": "Maximize Sales with ShipBob's Amazon Fulfillment Suite",
+        "meta": "Experience ShipBob's best-in-class direct integration with Amazon, and expert support, to handle all of your Amazon fulfillment needs.",
+        "h1": "Amazon Fulfillment Suite"
+      },
+      {
+        "theme": "warehousing",
+        "url": "https://www.shipbob.com/warehousing-services/",
+        "title": "Warehousing Services for Ecommerce Businesses | ShipBob",
+        "meta": "ShipBob offers warehousing and ecommerce fulfillment services for fast-growing businesses. Request a custom quote.",
+        "h1": "The Essential Warehousing Services for Any Ecommerce Business"
+      },
+      {
+        "theme": "kitting",
+        "url": "https://www.shipbob.com/product-kitting-services/",
+        "title": "Product Kitting and Assembly Services | ShipBob",
+        "meta": "Learn about the ins and outs of kitting, and how partnering with a 3PL like ShipBob can speed up the kitting process for fast fulfillment.",
+        "h1": "Product Kitting Services"
+      },
+      {
+        "theme": "kitting (guide)",
+        "url": "https://www.shipbob.com/ecommerce-fulfillment/kitting-assembly/",
+        "title": "Kitting & Assembly Services For Ecommerce Brands",
+        "meta": "A successful kitting and assembly process is vital for ecommerce brands to get packages out quickly. Learn about ShipBob's kitting services.",
+        "h1": "Kitting and Assembly"
+      },
+      {
+        "theme": "pick & pack",
+        "url": "https://www.shipbob.com/ecommerce-fulfillment/pick-pack-fulfillment/",
+        "title": "Pick & Pack Warehouse Fulfillment: What is Pick & Pack?",
+        "meta": "Learn more about the pick and pack fulfillment processes and how ShipBob fulfills orders for thousands of ecommerce brands.",
+        "h1": "Pick & Pack Fulfillment Guide"
+      },
+      {
+        "theme": "pick & ship",
+        "url": "https://www.shipbob.com/pick-ship-services/",
+        "title": "Pick and Ship Services | Order Fulfillment | ShipBob",
+        "meta": "Pick and ship services by ShipBob. Learn how ShipBob works by requesting a free demo and quote of our fulfillment services.",
+        "h1": "Pick and Ship Services"
+      },
+      {
+        "theme": "returns/reverse logistics",
+        "url": "https://www.shipbob.com/returns-management/",
+        "title": "Returns Management Services | ShipBob",
+        "meta": "ShipBob’s returns management services combine configurable workflows, warehouse processing, and real-time visibility to help streamline reverse logistics.",
+        "h1": "ShipBob’s Returns Management Solution"
+      },
+      {
+        "theme": "cross-docking (blog guide)",
+        "url": "https://www.shipbob.com/blog/cross-docking/",
+        "title": "What is Cross-Docking? Warehousing Benefits & Strategies",
+        "meta": "Learn the the ins and outs of cross-docking, and whether or not this logistics method is right for your ecommerce supply chain.",
+        "h1": "A Comprehensive Guide to Cross Docking for Ecommerce Logistics"
+      },
+      {
+        "theme": "inventory storage",
+        "url": "https://www.shipbob.com/warehouse-operations/inventory-storage/",
+        "title": "Inventory Storage Solutions & Systems for Ecommerce",
+        "meta": "Storing inventory varies from business to business, based on sales volume, products, and locations. Learn the best options for you.",
+        "h1": "Inventory Storage Guide"
+      },
+      {
+        "theme": "subscription box",
+        "url": "https://www.shipbob.com/ecommerce-fulfillment/subscription-box-fulfillment/",
+        "title": "Subscription Box Fulfillment Services Explained | ShipBob",
+        "meta": "Learn how ShipBob can help fulfill subscription orders for your ecommerce business. Request more info to see if we're the right partner.",
+        "h1": "Subscription Box Fulfillment Guide"
+      },
+      {
+        "theme": "pricing",
+        "url": "https://www.shipbob.com/pricing/",
+        "title": "ShipBob Pricing: ShipBob's Outsourced Fulfillment Service Costs",
+        "meta": "Learn about ShipBob's core fulfillment fees when you outsource fulfillment, and request a customized pricing quote.",
+        "h1": "Clear outsourced order fulfillment pricing"
+      },
+      {
+        "theme": "locations/warehouse network",
+        "url": "https://www.shipbob.com/shipbob-locations/",
+        "title": "ShipBob Locations: Where Are ShipBob’s Fulfillment Centers?",
+        "meta": "ShipBob is a leading fulfillment provider that has warehouses around the world, including the US, Canada, the UK, Europe, and Australia.",
+        "h1": "N/A (empty <h1> in served HTML)"
+      },
+      {
+        "theme": "location - city template (~620 /shipbob-locations/ pages)",
+        "url": "https://www.shipbob.com/shipbob-locations/usa/nevada/reno/",
+        "title": "Reno 3PL & Ecommerce Fulfillment Services [#1]",
+        "meta": "ShipBob is a global 3PL that offers fulfillment solutions for businesses operating out of Reno, Nevada. Request a quote.",
+        "h1": "Fast & accurate order fulfillment from our Reno fulfillment center"
+      },
+      {
+        "theme": "industries hub",
+        "url": "https://www.shipbob.com/industry/",
+        "title": "How ShipBob Serves Industries & Verticals",
+        "meta": "Explore ShipBob’s fulfillment solutions for every industry, with fast shipping, distributed inventory, and unified DTC, B2B, and marketplace operations.",
+        "h1": "Industries Served"
+      },
+      {
+        "theme": "integrations hub (redirects to partners.shipbob.com)",
+        "url": "https://www.shipbob.com/partners/",
+        "title": "ShipBob Partner Ecosystem & Integration Directory",
+        "meta": "Discover ShipBob partners and apps.",
+        "h1": "ShipBob Partner Ecosystem & Integrations"
+      },
+      {
+        "theme": "comparison/vs",
+        "url": "https://www.shipbob.com/shipbob-shipstation-review/",
+        "title": "ShipBob vs. ShipStation: Ecommerce Shipping Solutions Review [2022]",
+        "meta": "Not sure what ecommerce shipping solution is right for you? This guide provides a direct comparison of ShipBob vs. ShipStation.",
+        "h1": "N/A (only a CTA <h1> 'Looking for a fulfillment solution?')"
+      },
+      {
+        "theme": "comparison/listicle",
+        "url": "https://www.shipbob.com/3pl/companies/",
+        "title": "11 Best 3PL Shipping Companies in 2025",
+        "meta": "Compared to other 3PL companies, ShipBob provides the warehousing, technology, and support you need to scale your business.",
+        "h1": "Top 3PL Companies for Ecommerce Shipping"
+      },
+      {
+        "theme": "best-of page",
+        "url": "https://www.shipbob.com/best-fulfillment-company/",
+        "title": "Best Fulfillment Company | #1 Top Fulfillment Center for Ecommerce",
+        "meta": "The best fulfillment company is one that enables you to outsource warehousing, picking, packing, and shipping of your products. ShipBob does it all.",
+        "h1": "Best Fulfillment Company for Ecommerce Businesses"
+      },
+      {
+        "theme": "blog hub",
+        "url": "https://www.shipbob.com/blog/",
+        "title": "Blog Archive - ShipBob",
+        "meta": "N/A (no meta description found)",
+        "h1": "N/A (only CTA <h1>)"
+      }
+    ],
+    "industries": [
+      "~50 /industry/ pages incl.: apparel, accessories, lifestyle & fashion, skincare/cosmetics/beauty, perfume & fragrances, supplements, nutraceuticals, probiotics, health & nutrition, healthcare, CBD, coffee & tea, non-perishables, organic goods, natural products, consumer packaged goods, household goods, kitchenware, kitchen appliances, furniture, garden, hardware, auto parts, pet products & accessories, baby products, children's goods, toys, board games, collectibles, books, magazines, catalogs, music, entertainment, education & publishing equipment, office equipment, smart devices & wearables, sports & fitness, outdoor equipment, gifts & giftsets, product samples, marketing materials & prints, fabrics & textiles, durable goods, dental & oral hygiene, hospitality, travel & tourism, influencers & content creators, sustainable/eco-friendly",
+      "Plus standalone vertical pages e.g. /food-and-beverage-fulfillment/, /health-beauty-fulfillment/, /medical-device-equipment-fulfillment/, /electronics-fulfillment/, /gaming-fulfillment/, /luxury-fulfillment/"
+    ],
+    "content_patterns": [
+      "Massive programmatic location SEO: ~620 /shipbob-locations/ URLs (country/state/city) incl. US, Canada, UK, Europe, Australia",
+      "~50 /industry/ pages plus many standalone vertical '*-fulfillment' and '*-inventory'/'*-logistics' pages",
+      "Retailer-specific EDI pages: /edi-fulfillment/walmart, target, nordstrom-rack, sephora, dicks, kohls, neiman-marcus, best-buy, urban-outfitters",
+      "Platform-specific pages (weebly, magento, miva, wordpress fulfillment)",
+      "Glossary-style evergreen hubs: /warehouse-management/* (13+), /inventory-management/* (11+), /inventory-kpis/*, /ecommerce-shipping/*, /3pl/*, /ecommerce-logistics/*",
+      "Competitor 'review' pages (ShipBob vs ShipStation, Shippo, EasyPost) and '11 Best 3PL' listicle; /amazon-to-shipbob and /self-fulfillment-to-shipbob switch pages",
+      "~800-post blog incl. wholesale, B2B, FBA, cross-docking topics; 161 partner/integration pages; separate /uk, /au, /es sitemaps (international subfolders)"
+    ],
+    "services_not_found": [
+      "Dedicated Amazon FBA prep page not found (/fba-prep/ and /amazon-fba-prep/ 404; Amazon covered via /amazon-fulfillment/ and /product/amazon/)",
+      "Dedicated B2B/wholesale service page not found (/b2b-fulfillment/ 301s to blog guide; /wholesale-fulfillment/ 404)",
+      "Dedicated cross-docking service page (blog guide only)"
+    ],
+    "access_issues": [
+      "/blog/cross-docking/ and /cross-docking/ redirect between each other; final fetched URL /blog/cross-docking/",
+      "Several pages expose only a site-wide CTA <h1> ('Looking for a fulfillment solution?') or empty <h1>",
+      "Blog sitemap required compressed fetch; no other blocks"
+    ],
+    "research_date": "2026-11-27"
+  },
+  {
+    "name": "ShipMonk",
+    "domain": "shipmonk.com",
+    "positioning": "3PL for D2C ecommerce brands with owned fulfillment centers in North America, UK and Europe; leads on accuracy/guarantees ('You make the promise. We keep it.', 99.9% accuracy) and verticals like apparel and supplements, plus B2B/wholesale and FBA prep.",
+    "claims": [
+      {
+        "text": "Trusted by 4,400+ brands",
+        "url": "https://www.shipmonk.com/"
+      },
+      {
+        "text": "Our campus model clusters 12+ fulfillment centers on 7 campuses in key markets, creating shared capacity and flexibility.",
+        "url": "https://www.shipmonk.com/"
+      },
+      {
+        "text": "2-day ground delivery to 95% of the lower 48",
+        "url": "https://www.shipmonk.com/"
+      },
+      {
+        "text": "Every move scanned. Every location counted. 99.6%+ inventory accuracy.",
+        "url": "https://www.shipmonk.com/"
+      },
+      {
+        "text": "99.9% order accuracy you can track in the ShipMonk Platform.",
+        "url": "https://www.shipmonk.com/"
+      },
+      {
+        "text": "ShipMonk operates owned fulfillment centers across North America, the UK, and Europe. (meta description)",
+        "url": "https://www.shipmonk.com/resources/fulfillment-locations"
+      },
+      {
+        "text": "Location page lists: '10 fulfillment centers', '7 fulfillment centers · 1 office', '2 fulfillment centers · 1 office', '1 fulfillment center' (per-region figures; region labels not captured)",
+        "url": "https://www.shipmonk.com/resources/fulfillment-locations"
+      },
+      {
+        "text": "100+ integrations (Shopify, Amazon, TikTok)",
+        "url": "https://www.shipmonk.com/resources/fulfillment-locations"
+      }
+    ],
+    "pages": [
+      {
+        "theme": "homepage",
+        "url": "https://www.shipmonk.com/",
+        "title": "ShipMonk: Leading 3PL Fulfillment for D2C Ecommerce Brands",
+        "meta": "ShipMonk is the leading 3PL for D2C ecommerce brands — fast fulfillment, 99.9% accuracy, and technology built to scale with you. Get a free quote.",
+        "h1": "You make the promise. We keep it."
+      },
+      {
+        "theme": "ecommerce fulfillment",
+        "url": "https://www.shipmonk.com/fulfillment-solutions/3pl-ecommerce-fulfillment",
+        "title": "3PL Fulfillment Services for D2C Ecommerce Brands | ShipMonk",
+        "meta": "ShipMonk's 3PL fulfillment handles warehousing, pick & pack, and fast shipping for D2C brands. 99.9% accuracy. Get a free quote.",
+        "h1": "ShipMonk: Streamlined 3PL Solutions for Seamless Fulfillment"
+      },
+      {
+        "theme": "B2B/wholesale + EDI",
+        "url": "https://www.shipmonk.com/fulfillment-solutions/b2b-fulfillment",
+        "title": "B2B Fulfillment Services | ShipMonk Fulfillment Center",
+        "meta": "Unlock the potential of your ecommerce business with effective B2B fulfillment strategies to meet retail partner demands.",
+        "h1": "B2B fulfillment that earns the next PO"
+      },
+      {
+        "theme": "retail chargeback protection",
+        "url": "https://www.shipmonk.com/fulfillment-solutions/b2b-fulfillment/retail-chargeback-protection",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "retail fulfillment (LP)",
+        "url": "https://www.shipmonk.com/lp/retail-fulfillment",
+        "title": "Retail Fulfillment - ShipMonk | Fulfillment Center | Order Fulfillment Services",
+        "meta": "Retail Fulfillment - ShipMonk | Fulfillment Center | Order Fulfillment Services",
+        "h1": "Why ShipMonk for Retail Fulfillment"
+      },
+      {
+        "theme": "Amazon FBA prep",
+        "url": "https://www.shipmonk.com/fulfillment-solutions/marketplace-fulfillment/fba-prep-services",
+        "title": "FBA Prep Services | ShipMonk Fulfillment Center",
+        "meta": "Streamline your Amazon business with FBA Prep services. Let ShipMonk handle the logistics and stress of FBA for you.",
+        "h1": "Conquer Amazon FBA with ShipMonk"
+      },
+      {
+        "theme": "warehousing (LP)",
+        "url": "https://www.shipmonk.com/lp/3pl-warehousing",
+        "title": "Warehousing - ShipMonk | Fulfillment Center | Order Fulfillment Services",
+        "meta": "Warehousing - ShipMonk | Fulfillment Center | Order Fulfillment Services",
+        "h1": "Why ShipMonk for Warehousing"
+      },
+      {
+        "theme": "kitting / customizations",
+        "url": "https://www.shipmonk.com/fulfillment-solutions/customizations",
+        "title": "Customization Fulfillment: Elevate Brand Experience | ShipMonk",
+        "meta": "Unlock the power of customization fulfillment. Design unique packaging that reinforces your brand identity and delights customers.",
+        "h1": "ShipMonk’s Customization Options"
+      },
+      {
+        "theme": "returns/reverse logistics",
+        "url": "https://www.shipmonk.com/fulfillment-solutions/reverse-logistics",
+        "title": "Reverse Logistics Fulfillment for Customer Satisfaction | ShipMonk",
+        "meta": "Transform your returns into opportunities with effective reverse logistics fulfillment solutions that enhance customer satisfaction.",
+        "h1": "Recover inventory from returns, not just receive it."
+      },
+      {
+        "theme": "inventory storage/management",
+        "url": "https://www.shipmonk.com/platform/3pl-inventory-management",
+        "title": "3PL Inventory Management for Ecommerce Brands | ShipMonk",
+        "meta": "3PL inventory management from ShipMonk: receiving, smart slotting, accuracy, real-time visibility, and lot control inside our owned fulfillment centers.",
+        "h1": "3PL Inventory Management That Lives on the Warehouse Floor"
+      },
+      {
+        "theme": "bonded warehouses",
+        "url": "https://www.shipmonk.com/fulfillment-solutions/bonded-warehouses",
+        "title": "Bonded Warehouses Fulfillment: Save Money Today | ShipMonk",
+        "meta": "Explore how bonded warehouses fulfillment can help reduce costs and improve cash flow for your business amidst global trade challenges.",
+        "h1": "Navigate the End of Section 321 with a Bonded Warehouse"
+      },
+      {
+        "theme": "pricing",
+        "url": "https://www.shipmonk.com/pricing",
+        "title": "3PL Fulfillment Pricing for D2C Brands | ShipMonk",
+        "meta": "See ShipMonk's transparent 3PL pricing — storage, pick & pack, shipping, and returns. No hidden fees. Get a free quote today.",
+        "h1": "Know where every dollar goes."
+      },
+      {
+        "theme": "locations/warehouse network",
+        "url": "https://www.shipmonk.com/resources/fulfillment-locations",
+        "title": "ShipMonk Fulfillment Centers | Locations Across US, UK & Europe",
+        "meta": "ShipMonk operates owned fulfillment centers across North America, the UK, and Europe. Fast 2-day shipping from strategic locations. Get a quote.",
+        "h1": "The ShipMonk Fulfillment Network"
+      },
+      {
+        "theme": "location - facility page (10 total)",
+        "url": "https://www.shipmonk.com/resources/fulfillment-locations/las-vegas-nevada",
+        "title": "Las Vegas, Nevada Fulfillment Center | ShipMonk",
+        "meta": "Explore the benefits of the Nevada Fulfillment Center in Las Vegas for cost-effective and efficient shipping solutions.",
+        "h1": "ShipMonk’s Nevada Fulfillment Campus"
+      },
+      {
+        "theme": "industries hub",
+        "url": "https://www.shipmonk.com/industries",
+        "title": "3PL Fulfillment by Industry | Apparel, Beauty & Supplements | ShipMonk",
+        "meta": "ShipMonk offers specialized 3PL fulfillment for apparel, health & beauty, supplements, home goods, and more. Purpose-built for D2C brands. Get a free quote.",
+        "h1": "3PL fulfillment by industry"
+      },
+      {
+        "theme": "integrations hub",
+        "url": "https://www.shipmonk.com/platform/integrations",
+        "title": "3PL Integrations: Shopify, Amazon & 100+ Apps | ShipMonk",
+        "meta": "N/A (not fetched)",
+        "h1": "Connect your ecommerce ecosystem and scale like a boss"
+      },
+      {
+        "theme": "comparison hub (/lp/shipmonk-vs-* pages 301 here)",
+        "url": "https://www.shipmonk.com/lp/compare-to-shipmonk",
+        "title": "Compare ShipMonk to Other 3PLs | Best Fulfillment Solution",
+        "meta": "See how ShipMonk stacks up against other 3PLs. Compare pricing, features, and support to choose the best fulfillment partner for your growing brand.",
+        "h1": "Why Choose ShipMonk?"
+      },
+      {
+        "theme": "comparison/vs",
+        "url": "https://www.shipmonk.com/apparel-fulfillment/shipmonk-vs-shipbob-apparel",
+        "title": "ShipMonk vs. ShipBob for Apparel Brands | ShipMonk",
+        "meta": "ShipMonk is built for apparel brands that need dedicated infrastructure, proof on every return, and financial guarantees. See how we compare to ShipBob.",
+        "h1": "Apparel fulfillment built to protect your revenue"
+      },
+      {
+        "theme": "comparison/vs",
+        "url": "https://www.shipmonk.com/apparel-fulfillment/shipmonk-vs-stord-apparel",
+        "title": "ShipMonk vs. Stord for Apparel Brands | ShipMonk",
+        "meta": "N/A (not fetched)",
+        "h1": "More than technology. Purpose-Built for apparel."
+      },
+      {
+        "theme": "alternatives",
+        "url": "https://www.shipmonk.com/fulfillment-alternative",
+        "title": "ShipMonk: The 3PL Alternative D2C Brands Actually Switch To",
+        "meta": "Switching fulfillment providers? ShipMonk offers 99.9% accuracy, 7-day operations, transparent pricing, and zero hidden fees. Get a quote.",
+        "h1": "N/A (no <h1> in served HTML)"
+      },
+      {
+        "theme": "tool - calculator",
+        "url": "https://www.shipmonk.com/resources/dimensional-weight-calculator",
+        "title": "Dimensional Weight Calculator | ShipMonk Fulfillment Services",
+        "meta": "Use our Dimensional Weight Calculator to find the best shipping rates. Get accurate quotes based on package dimensions.",
+        "h1": "Dimensional Weight Calculator"
+      },
+      {
+        "theme": "blog hub",
+        "url": "https://www.shipmonk.com/resources/content-hub",
+        "title": "Content Hub Blog - ShipMonk | Fulfillment Services",
+        "meta": "The ShipMonk Content Hub Blog helps growing brands scale with smarter operations and stress-free logistics.",
+        "h1": "The ShipMonk Blog"
+      },
+      {
+        "theme": "resources hub",
+        "url": "https://www.shipmonk.com/resources",
+        "title": "Resources - ShipMonk | Fulfillment Center | Order Fulfillment Services",
+        "meta": "Resources - ShipMonk | Fulfillment Center | Order Fulfillment Services",
+        "h1": "ShipMonk Resources"
+      },
+      {
+        "theme": "pick & pack (blog)",
+        "url": "https://www.shipmonk.com/resources/content-hub/picking-packing-ecommerce-fulfillment-services-3pl-fulfillment-warehouse-management",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "subscription box (blog)",
+        "url": "https://www.shipmonk.com/resources/content-hub/subscription-boxes-and-services-are-they-right-for-your-business",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      }
+    ],
+    "industries": [
+      "Apparel & accessories",
+      "Beauty & personal care",
+      "Electronics",
+      "Food & beverage",
+      "Gifts & novelty items",
+      "Health & supplements",
+      "Home & garden / household goods",
+      "Pet products",
+      "Sports & outdoors",
+      "Toys & games"
+    ],
+    "content_patterns": [
+      "Competitor 'vs' URLs for Stord, Flexport, ShipHero, ShipBob, Flowspace, Flexe, Ware2Go - all 301 to one /lp/compare-to-shipmonk hub; only apparel vs ShipBob/Stord pages are standalone",
+      "/fulfillment-alternative switching page + ebook on migrating from a prior fulfillment partner",
+      "Free tools: dimensional weight calculator, shipping zone locator, Cubiscan page",
+      "One page per owned facility (10 location pages incl. Las Vegas, Dallas-Fort Worth, Pittston PA, Louisville KY, Fort Lauderdale, Los Angeles, Ontario Canada, Coalville UK, Cheb Czech Republic)",
+      "~527-post content hub incl. two-part ecommerce glossary, FBA prep, wholesale, EDI B2B, kitting, reverse logistics guides",
+      "Many paid-landing /lp/ pages with duplicated title=meta (e.g., /lp/3pl-warehousing, /lp/retail-fulfillment)",
+      "Platform feature pages (carrier overcharge protection, quality guard, automation rules, wholesale order tracking, SOC 2 compliance); trust/proof-heavy messaging (guarantees, accuracy %)",
+      "Trustpilot reviews sitemap and case-studies sitemap"
+    ],
+    "services_not_found": [
+      "Cross-docking (no page or post found in page/post sitemaps)",
+      "Dedicated subscription box fulfillment service page (blog posts only)",
+      "Dedicated pick & pack service page (blog only)",
+      "Dedicated kitting page (/fulfillment-solutions/kitting 404; covered by /fulfillment-solutions/customizations)"
+    ],
+    "access_issues": [
+      "/lp/shipmonk-vs-shipbob, -vs-stord, -vs-flowspace (and other vs LPs) 301-redirect to /lp/compare-to-shipmonk",
+      "/fulfillment-alternative has no <h1> in served HTML"
+    ],
+    "research_date": "2026-11-27"
+  },
+  {
+    "name": "DCL Logistics",
+    "domain": "dclcorp.com",
+    "positioning": "Established (40+ years) ISO 9001 3PL for high-growth brands offering ecommerce, B2B/retail and omnichannel fulfillment with a bi-coastal US network plus Canada/Europe; strong in consumer electronics, medical devices and kitting/assembly, with its own eFactory platform.",
+    "claims": [
+      {
+        "text": "DCL provides businesses with 40+ years of logistics excellence. (meta description)",
+        "url": "https://dclcorp.com/"
+      },
+      {
+        "text": "With 40 years of operational expertise, and an ISO 9001 certification",
+        "url": "https://dclcorp.com/"
+      },
+      {
+        "text": "20K+ Orders are shipped out of 7 US facilities daily",
+        "url": "https://dclcorp.com/dcl-locations/"
+      },
+      {
+        "text": "2.5M+ Units are shipped daily",
+        "url": "https://dclcorp.com/dcl-locations/"
+      },
+      {
+        "text": "4:1 Customer to account manager ratio",
+        "url": "https://dclcorp.com/dcl-locations/"
+      },
+      {
+        "text": "99.8% On-time shipment and order accuracy",
+        "url": "https://dclcorp.com/dcl-locations/"
+      },
+      {
+        "text": "DCL clients save an average of 33% and 21% on small parcel and LTL, respectively. (same page also shows stat blocks 32% / 22%)",
+        "url": "https://dclcorp.com/dcl-locations/"
+      },
+      {
+        "text": "In the US, our bi-coastal network enables faster delivery and lower freight costs ... DCL international locations strategically in Canada and Europe.",
+        "url": "https://dclcorp.com/dcl-locations/"
+      },
+      {
+        "text": "Listed facilities: Fremont CA (Milmont Dr; Kato Rd), Ontario CA, Perris CA, Louisville KY, York PA",
+        "url": "https://dclcorp.com/dcl-locations/"
+      }
+    ],
+    "pages": [
+      {
+        "theme": "homepage",
+        "url": "https://dclcorp.com/",
+        "title": "DCL Logistics: Fulfillment Solutions for High-growth Brands",
+        "meta": "Ecommerce, B2B, and omnichannel fulfillment and logistics experts. DCL provides businesses with 40+ years of logistics excellence. Learn more.",
+        "h1": "We provide hassle-free fulfillment."
+      },
+      {
+        "theme": "services hub",
+        "url": "https://dclcorp.com/services/",
+        "title": "Services | DCL Logistics",
+        "meta": "DCL Logistics offers a portfolio of outsourced supply chain and multi-channel fulfillment services. Discover how we can tailor our services to your needs.",
+        "h1": "Services"
+      },
+      {
+        "theme": "ecommerce fulfillment",
+        "url": "https://dclcorp.com/services/ecommerce-fulfillment/",
+        "title": "Ecommerce Fulfillment Services | DCL Logistics",
+        "meta": "High-growth ecommerce business come to us for order fulfillment & warehousing. Get customized fulfillment services & nationwide fulfillment centers to give your customers the very best.",
+        "h1": "Omnichannel Ecommerce Fulfillment"
+      },
+      {
+        "theme": "B2B/wholesale + retail/EDI fulfillment",
+        "url": "https://dclcorp.com/services/retail-fulfillment/",
+        "title": "Retail Fulfillment for Omnichannel Ecommerce Brands | DCL Logistics",
+        "meta": "Get into your dream retail store. Our B2B fulfillment & order fulfillment solutions will optimize your retail orders for maximum customer satisfaction, every time.",
+        "h1": "B2B and Retail Fulfillment Services"
+      },
+      {
+        "theme": "Amazon / FBA",
+        "url": "https://dclcorp.com/services/amazon-fulfillment-services/",
+        "title": "Fulfillment Services for High-Growth Amazon Sellers | DCL Logistics",
+        "meta": "DCL has years of experience getting products to Amazon. Let us help boost your Amazon store for Vendor or Seller Central, FBA, FBM, SFP & more.",
+        "h1": "Amazon Fulfillment Services"
+      },
+      {
+        "theme": "kitting",
+        "url": "https://dclcorp.com/services/kitting-assembly-services/",
+        "title": "Kitting & Assembly | Top Value-Added Services | DCL Logistics",
+        "meta": "DCL has a variety of VAS services: kitting, assembly, procurement, customization & more. As a leader in assembly work for over 40 years, we can accommodate your brand's unique needs.",
+        "h1": "Kitting, Assembly, and Value-Added Services"
+      },
+      {
+        "theme": "returns/reverse logistics",
+        "url": "https://dclcorp.com/services/reverse-logistics/",
+        "title": "Reverse Logistics Solutions for a Smoother Supply Chain | DCL Logistics",
+        "meta": "Turnkey returns management services for high-growth ecommerce brands. Track product returns, reallocate returned goods, refurbishing, remanufacturing & improve product lifecycle management.",
+        "h1": "Reverse Logistics Services"
+      },
+      {
+        "theme": "returns platform",
+        "url": "https://dclcorp.com/why-dcl/efactory-platform/returns-management/",
+        "title": "Returns Management Platform | Streamlined Reverse Logistics | DCL Logistics",
+        "meta": "Manage returns with full visibility—track RMAs, inspect quality, validate lot/expiration, and connect real-time updates to your support team.",
+        "h1": "Hassle-Free Returns Processing"
+      },
+      {
+        "theme": "locations/warehouse network",
+        "url": "https://dclcorp.com/dcl-locations/",
+        "title": "Where Are Our Fulfillment Centers? | DCL Logistics Fulfillment Center Locations",
+        "meta": "Fulfillment & logistics experts for 40 years, DCL Logistics operates a robust network of fulfillment centers and ships packages globally,",
+        "h1": "DCL Logistics Locations"
+      },
+      {
+        "theme": "location - city page (~25 /dcl-locations/ pages)",
+        "url": "https://dclcorp.com/dcl-locations/southern-california/irvine/",
+        "title": "Irvine Ecommerce Fulfillment Services | DCL Logistics",
+        "meta": "Fulfillment & logistics experts for 40 years, our Irvine fulfillment centers help brands get the fastest shipping to all West Coast regions.",
+        "h1": "Irvine Fulfillment Services"
+      },
+      {
+        "theme": "locations (company)",
+        "url": "https://dclcorp.com/company/locations/",
+        "title": "Locations | DCL Logistics",
+        "meta": "N/A (no meta description)",
+        "h1": "Locations"
+      },
+      {
+        "theme": "industry - beauty",
+        "url": "https://dclcorp.com/services/beauty/",
+        "title": "Scalable Fulfillment & Logistics for Beauty Brands | DCL Logistics",
+        "meta": "Decades of Expertise Supporting High-Growth Beauty & Wellness Brands: DTC Fulfillment, Retail Shipping, and Kitting & Assembly Services.",
+        "h1": "Omnichannel Fulfillment for Beauty Brands"
+      },
+      {
+        "theme": "integrations hub",
+        "url": "https://dclcorp.com/resources/integrations/",
+        "title": "Integrations | DCL Logistics",
+        "meta": "DCL Logistics seamlessly integrates with a robust list of ecommerce platforms, ERP systems, and EDI Retail Connections. Learn more here.",
+        "h1": "Integrations"
+      },
+      {
+        "theme": "comparison",
+        "url": "https://dclcorp.com/competitors/",
+        "title": "Competitor Comparison | DCL Logistics",
+        "meta": "Learn more about the services that DCL has to offer as well as the company itself.",
+        "h1": "N/A (no <h1>; little unique body content in served HTML)"
+      },
+      {
+        "theme": "FBA alternatives (blog; redirects)",
+        "url": "https://dclcorp.com/blog/amazon-fulfillment/top-3-amazon-fba-alternatives/",
+        "title": "3PL vs. Amazon for Order Fulfillment: Pros & Cons | DCL Logistics (after 301 to /blog/amazon-fulfillment/amazon-fba-vs-3pl/)",
+        "meta": "N/A (not fetched)",
+        "h1": "FBA vs. 3PL – Which is the Best Amazon Fulfillment Option for You?"
+      },
+      {
+        "theme": "cross-docking (blog only)",
+        "url": "https://dclcorp.com/blog/supply-chain/cross-docking/",
+        "title": "Cross-Docking Explained: Understanding the Pros & Cons | DCL Logistics",
+        "meta": "Cross-docking is a widely used supply chain management technique that optimizes the flow of goods through a warehouse or fulfillment center.",
+        "h1": "Cross-Docking Explained: Understanding the Pros & Cons"
+      },
+      {
+        "theme": "subscription box (blog only)",
+        "url": "https://dclcorp.com/blog/fulfillment/fulfillment-strategies-for-subscription-box-operations/",
+        "title": "Subscription Box Fulfillment: How to Run the Monthly Drop at Scale | DCL Logistics",
+        "meta": "N/A (not fetched)",
+        "h1": "Subscription Box Fulfillment: How to Run the Monthly Drop at Scale"
+      },
+      {
+        "theme": "pick & pack (blog only)",
+        "url": "https://dclcorp.com/blog/fulfillment/pick-and-pack-fulfillment/",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "warehousing (blog only)",
+        "url": "https://dclcorp.com/blog/3pl/basics-of-ecommerce-warehousing/",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      },
+      {
+        "theme": "customers/case studies",
+        "url": "https://dclcorp.com/customers/",
+        "title": "Featured Customer Case Studies | DCL Logistics",
+        "meta": "We support diverse and dynamic brands, from startups to established enterprise companies. Learn more about how DCL supports their customers here.",
+        "h1": "Featured Customer Case Studies"
+      },
+      {
+        "theme": "resources hub",
+        "url": "https://dclcorp.com/resources/",
+        "title": "Resources | DCL Logistics",
+        "meta": "N/A (no meta description)",
+        "h1": "Resources"
+      },
+      {
+        "theme": "blog hub",
+        "url": "https://dclcorp.com/blog/",
+        "title": "N/A (not fetched)",
+        "meta": "N/A (not fetched)",
+        "h1": "N/A (not fetched)"
+      }
+    ],
+    "industries": [
+      "Beauty",
+      "Pet accessories",
+      "CPG",
+      "Nutritional supplements",
+      "Hardware brands / connected devices",
+      "Sports and fitness",
+      "Consumer electronics",
+      "Medical devices",
+      "(customer pages: medical, consumer electronics, health & beauty, women-owned)"
+    ],
+    "content_patterns": [
+      "~25 location pages by region/city (Southern California cities incl. Irvine, Anaheim, Long Beach, Santa Ana, LA, San Diego, Orange County; East Coast: NY, NJ, Boston, Philadelphia, Pittsburgh, Baltimore, York PA; Bay Area/Fremont; Louisville KY; Canada) - many target metros without a facility",
+      "Industry pages live under /services/ (beauty, cpg, supplements, pet, hardware, sports, electronics, medical devices)",
+      "~624-post blog with glossary-style warehouse/picking terms (wave, batch, zone, cluster, piece picking), cost articles (3PL costs, fulfillment cost per order), FBA/Section 321/bonded warehouse topics",
+      "Gated guides (fulfillment guide, shipping guide, inventory management guide, 3PL questionnaire, holiday guide, customs compliance guide)",
+      "Dedicated FAQ, EDI-partner and technology-partner sitemaps (partner directory pages); case-study sitemap",
+      "/competitors/ comparison page; eFactory platform feature pages; Section 321 and select-ship/transit-times pages",
+      "No public pricing page"
+    ],
+    "services_not_found": [
+      "Pricing page (/pricing/ 404)",
+      "Dedicated warehousing/inventory storage service page (blog only)",
+      "Dedicated cross-docking page (blog only)",
+      "Dedicated subscription box fulfillment page (blog only)",
+      "Dedicated pick & pack page (blog only)",
+      "Dedicated FBA prep page (FBA covered on /services/amazon-fulfillment-services/)"
+    ],
+    "access_issues": [
+      "/competitors/ returns 200 but served HTML has no <h1> and little unique body text",
+      "/company/locations/ and /resources/ have no meta description",
+      "/blog/amazon-fulfillment/top-3-amazon-fba-alternatives/ 301-redirects to /blog/amazon-fulfillment/amazon-fba-vs-3pl/"
+    ],
+    "research_date": "2026-11-27"
+  }
+]
